@@ -1,15 +1,43 @@
 
+
+a{
+    color:white
+    
+}
+a:hover{
+    background: #808080;
+    color:#ffcc4d;
+}
+
+
 .container-box {
-    margin-left: 2%;
+    margin-left: 0%;  
+    background-color: #808080;
+    width: 250px;
+    height: 100%;
+    position: absolute;
+    top: 58px;
+   
+}
+.container-box2 {
+    margin-left: 0%;  
+    background-color: #808080;
+    width: 250px;
+    height: 100%;
+    position: absolute;
+    top: 350px;
+   
 }
 
 .categorias {
     height: 350px;
     width: 150px
+    
 }
 
 .categoria-produto {
     font-size: 20px
+    
 }
 
 .categoria-serviço {
@@ -17,21 +45,31 @@
 }
 
 .label-produto {
-    color: #066a75
+    color: black;
+    font-family: 'Quicksand';
+    background-color:#ffcc4d;
+    width: 250px;
+    height: 100%;
+    
 }
 
 .label-serviço {
-    color: #066a75
+    color: black;
+    font-family: 'Quicksand';
+    background-color:#ffcc4d;
+    width: 250px;
+    height: 100%;
+    
 }
 
 .mascara {
-    color: #666;
+    color: #ffb600;
     text-decoration: none;
     cursor: pointer;
 }
 
 .texto-da-procura {
-    padding: 1%;
+    padding: 0%;
     color: #066a75;
     font-size: 20px
 }
@@ -43,7 +81,7 @@
 
 input[type="submit"] {
     cursor: pointer;
-    background: #3d9db3;
+    background: #ffb600;
     color: #fff;
     font-size: 20px;
     border: 1px solid #fff;
@@ -54,7 +92,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background: #4ab3c6;
+    background: black;
     height: 10px;
 }
 
