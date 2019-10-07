@@ -1,0 +1,60 @@
+
+.container-box {
+    margin-left: 2%;
+}
+
+.categorias {
+    height: 350px;
+    width: 150px
+}
+
+.categoria-produto {
+    font-size: 20px
+}
+
+.categoria-serviço {
+    font-size: 20px
+}
+
+.label-produto {
+    color: #066a75
+}
+
+.label-serviço {
+    color: #066a75
+}
+
+.mascara {
+    color: #666;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.texto-da-procura {
+    padding: 1%;
+    color: #066a75;
+    font-size: 20px
+}
+
+.form-busca {
+    background-color: none;
+    text-align: center;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    background: #3d9db3;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid #fff;
+    margin-top: 10px;
+    text-shadow: 0 1px 1px #333;
+    border-radius: 5px;
+    transition: all 0.2s linear;
+}
+
+input[type="submit"]:hover {
+    background: #4ab3c6;
+    height: 10px;
+}
+
