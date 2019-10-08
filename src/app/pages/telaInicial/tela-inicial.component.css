@@ -46,7 +46,7 @@ a:hover{
 
 .label-produto {
     color: black;
-    font-family: 'Quicksand';
+    font-family: 'Arial';
     background-color:#ffcc4d;
     width: 250px;
     height: 100%;
@@ -55,7 +55,7 @@ a:hover{
 
 .label-serviço {
     color: black;
-    font-family: 'Quicksand';
+    font-family: 'Arial';
     background-color:#ffcc4d;
     width: 250px;
     height: 100%;

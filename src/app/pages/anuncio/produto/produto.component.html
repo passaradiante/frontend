@@ -1,1 +1,38 @@
-<p>produto works!</p>
+<div class="content">
+    <div id="cadastro-produto">
+<form (ngSubmit)="Anunciar()">
+<h1> Anuncie seu produto ou serviço</h1>
+
+<p>
+    <label>Escolha a imagem do produto</label>
+    <input type="file" formControlname="url" (change)="onSelectFile($event)">
+</p>
+
+
+<p>
+<label>Nome do produto </label>
+<input id="nome-produto_cad"[(ngModel)]="produtoCadastro.nome"  name="nome-produto_cad" required="required" type="text" placeholder="Cadeira de rodas" />
+
+</p>
+
+<p>
+    <label>Descrição Produto</label>
+    <input id="descricao-produto_cad" [(ngModel)]="produtoCadastro.descricao"  name="descricao-produto_cad" required="required" type="text" placeholder="Gostaria de vender esse produto....." />
+
+</p>
+
+<p>
+    <label>Valor desejado do Produto</label>
+    <input id="valor-produto_cad" [(ngModel)]="produtoCadastro.valor"  name="valor-produto_cad" required="required" type="text" placeholder="50" />
+
+</p>
+<p >  
+        <input type="submit" value="Anunciar"/> </p>
+       
+<p class="link">
+        <a href=""> Retornar a pagina principal </a> 
+    </p>
+
+</form>
+    </div>
+</div>
