@@ -12,6 +12,7 @@ import { TelaInicialComponent } from './pages/telaInicial/tela-inicial.component
 import { ProdutoComponent } from './pages/anuncio/produto/produto.component';
 import { ServicoComponent } from './pages/anuncio/servico/servico.component';
 import { AnuncioComponent } from './pages/anuncio/anuncio.component';
+import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AnuncioComponent } from './pages/anuncio/anuncio.component';
     TelaInicialComponent,
     ProdutoComponent,
     ServicoComponent,
-    AnuncioComponent
+    AnuncioComponent,
+    CadastroProdutoComponent
   ],
   imports: [
     FormsModule,
