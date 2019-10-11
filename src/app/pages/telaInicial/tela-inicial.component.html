@@ -6,22 +6,44 @@
 
 </form>
 
+<body>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
 
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/src/assets/images/Carrosel/a.JPG" alt="Los Angeles" width="1100" height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="/src/assets/images/Carrosel/b.JPG" alt="Chicago" width="1100" height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="/src/assets/images/Carrosel/c.JPG" alt="New York" width="1100" height="500">
+            </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</body>
 <div class="card">
-  
     <h2>Produtos</h2>
     <div class="container3" *ngFor="let produtos of produtos">
-     
-           
-        <h4><b>  {{produtos.nome}} </b></h4> 
+        <h4><b> {{produtos.nome}} </b></h4>
         <img [src]="produtos.fotoUrl" alt="" style="width:10%">
-       <p>{{produtos.descricao}}</p> 
-       <p><button type="submit" class="btn btn-outline-warning">Comprar</button> Valor: R$ {{produtos.valor}}  </p>
-       
-        
-  
+        <p>{{produtos.descricao}}</p>
+        <p><button type="submit" class="btn btn-outline-warning">Comprar</button> Valor: R$ {{produtos.valor}} </p>
     </div>
-
 </div>
 <div class="container-box">
     <div class="categorias">
@@ -66,27 +88,27 @@
         </div>
         <div class="container-box2">
             <div class="categorias2">
-        <div class="categoria-serviço">
-            <div class="serviços">
-                <label class="label-serviço">Profissionais</label>
-                <ol>
-                    <p class="cuidadoras">
-                        <a href="serviços/cuidadoras">Cuidadoras</a>
-                    </p>
-                </ol>
-                <ol>
-                    <p class="enfermeiras">
-                        <a href="serviços/enfermeiras">Enfermeiras</a>
-                    </p>
-                    <p class="medicos">
-                        <a href="serviços/madicos">Médicos</a>
+                <div class="categoria-serviço">
+                    <div class="serviços">
+                        <label class="label-serviço">Profissionais</label>
+                        <ol>
+                            <p class="cuidadoras">
+                                <a href="serviços/cuidadoras">Cuidadoras</a>
+                            </p>
+                        </ol>
+                        <ol>
+                            <p class="enfermeiras">
+                                <a href="serviços/enfermeiras">Enfermeiras</a>
+                            </p>
+                            <p class="medicos">
+                                <a href="serviços/madicos">Médicos</a>
 
-                    </p>
-                    <p class="fisioterapeutas">
-                        <a href="serviços/fisioterapeutas">Fisioterapeutas</a>
-                    </p>
-                </ol>
+                            </p>
+                            <p class="fisioterapeutas">
+                                <a href="serviços/fisioterapeutas">Fisioterapeutas</a>
+                            </p>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
