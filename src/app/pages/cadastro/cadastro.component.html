@@ -1,22 +1,20 @@
-
 <div class="grid-cadastro">
-    <form (ngSubmit)="onSubmit()">
-        <h4>Crie a sua conta. É rápido!</h4>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Nome:</label>
-            <input type="text" class="form-control" id="nome" [(ngModel)]="usuarioCadastro.nome">
-          </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email:</label>
-          <input type="email" class="form-control" id="email" [(ngModel)]="usuarioCadastro.email">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Senha:</label>
-          <input type="password" class="form-control" id="senha" [(ngModel)]="usuarioCadastro.senha">
-        </div>
-        <div class="btnCadastrar">
-          <button type="submit" class="btn btn-outline-warning">Cadastre-se</button>
-        </div>
-      </form>
+  <form (ngSubmit)="cadastrarUsuario()">
+    <h4>Crie a sua conta. É rápido!</h4>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nome:</label>
+      <input type="text" class="form-control" id="nome" [(ngModel)]="usuario.nome" name="NomeUsuario" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email:</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="usuario.email" name="EmailUsuario" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Senha:</label>
+      <input type="password" class="form-control" id="senha" [(ngModel)]="usuario.senha" name="SenhaUsuario" required>
+    </div>
+    <div class="btnCadastrar">
+      <button type="submit" class="btn btn-outline-warning">Cadastre-se</button>
+    </div>
+  </form>
 </div>
-

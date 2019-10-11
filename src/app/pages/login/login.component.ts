@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioCadastro } from '../../model/usuariocadastro.model';
-import { CadastroUsuarioService } from 'src/app/services/cadastro-usuario.service';
+import { Usuario } from '../../model/usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,32 +12,36 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  usuarioCadastro: UsuarioCadastro = new UsuarioCadastro();
-  usuarios:any = [];
+  usuario: Usuario = new Usuario();
+  usuarios: any = [];
 
   constructor(
-    private service: CadastroUsuarioService
-    ) { }
+    private service: UsuarioService
+  ) { }
 
   ngOnInit() {
-    this.loadUsers();
+    this.loadData();
   }
 
-  loadUsers(): void{
-    this.service.listaUsuarios()
-    .then((result) => {
-      this.usuarios = result;
-      console.log(this.usuarios);
-    }).catch((err) => {
-    console.log(err);
-  });
-}
-  
+  loadData(): void {
+    this.service.listarUsuarios()
+      .then((result) => {
+        this.usuarios = result;
+        console.log(this.usuarios);
+      }).catch((err) => {
+        console.log(err);
+      });
+  }
+
   logar() {
-    const conta = this.usuarioCadastro;
-    if(this.service.logar(conta.email, conta.senha, this.usuarios))
-      alert('Usuario logado!')
-    else 
-      alert('Dados inválidos!')
+    const conta = this.usuario;
+    this.service.logar(conta.email, conta.senha, this.usuarios)
+      .then((result) => {
+        if (result) {
+          return alert("Usuario logado!")
+        }
+        alert("Dados inválidos!")
+      })
+
   }
 }

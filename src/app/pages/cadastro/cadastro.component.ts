@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioCadastro } from '../../model/usuariocadastro.model';
-import { CadastroUsuarioService } from 'src/app/services/cadastro-usuario.service';
+import { Usuario } from '../../model/usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,49 +10,38 @@ import { Router } from '@angular/router';
 })
 export class CadastroComponent implements OnInit {
 
-  usuarioCadastro: UsuarioCadastro = new UsuarioCadastro();
-  usuarios:any = [];
+  usuario: Usuario = new Usuario();
+  usuarios: any = [];
   constructor(
-    private service: CadastroUsuarioService,
+    private service: UsuarioService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
-    this.loadUsers();
+    this.loadData();
   }
 
-  loadUsers() {
-    this.service.listaUsuarios()
-    .then((result) => {
-      this.usuarios = result;
-      console.log(this.usuarios);
-    }).catch((err) => {
-    console.log(err);
-  });
-  }
-
-  onSubmit() {
-
-    if(!this.service.emailExiste(this.usuarioCadastro.email, this.usuarios)){
-
-    this.service.cadastrar(this.usuarioCadastro)
+  loadData() {
+    this.service.listarUsuarios()
       .then((result) => {
-
-        console.log(result);
-        if(result == 200)
-        alert('Cadastro efetuado com sucesso!')
-        this.router.navigateByUrl('/login');
-
+        this.usuarios = result;
+        console.log(this.usuarios);
       }).catch((err) => {
-        alert(err);
-    });
-
-    this.usuarioCadastro = new UsuarioCadastro();
-
-    } else {
-
-      alert("E-mail já cadastrado!")
-    }
+        console.log(err);
+      });
   }
+
+  cadastrarUsuario() {
+    this.service.cadastrar(this.usuario)
+      .then((result) => {
+        const operacao = result.data;
+        console.log(operacao);
+        //this.router.navigateByUrl('/login');
+      }).catch((result) => {
+        console.log(result);
+      });
+    this.usuario = new Usuario();
+  }
+
 
 }
