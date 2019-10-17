@@ -13,6 +13,7 @@ import { ProdutoComponent } from './pages/anuncio/produto/produto.component';
 import { ServicoComponent } from './pages/anuncio/servico/servico.component';
 import { AnuncioComponent } from './pages/anuncio/anuncio.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
+import { DetalheComponent } from './components/detalhe/detalhe.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-prod
     ProdutoComponent,
     ServicoComponent,
     AnuncioComponent,
-    CadastroProdutoComponent
+    CadastroProdutoComponent,
+    DetalheComponent
   ],
   imports: [
     FormsModule,
