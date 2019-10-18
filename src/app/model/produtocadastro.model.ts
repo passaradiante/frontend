@@ -4,4 +4,6 @@ export class ProdutoCadastro {
     descricao: string;
     valor: string;
     fotoUrl:string;
+    telefone:string;
+    email:string;
 }
