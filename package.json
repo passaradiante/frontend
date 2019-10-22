@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.3",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "ng-sidebar": "^9.1.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
