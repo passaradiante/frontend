@@ -6,6 +6,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { AnuncioComponent } from './pages/anuncio/anuncio.component';
 import { TelaInicialComponent } from './pages/telaInicial/tela-inicial.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
+import { DetalhesComponent } from './pages/detalhes/detalhes.component';
+
 
 
 
@@ -14,6 +16,7 @@ const routes: Routes = [
   { path: 'login',    component: LoginComponent },
   { path: 'anuncio',    component: AnuncioComponent },
   {path: 'cadastro-produto',component :CadastroProdutoComponent},
+  {path:'produto/detalhes', component: DetalhesComponent},
   { path: '',    component: TelaInicialComponent },
   {path:'barra-oculta', component: BarraOcultaComponent ,}
 ];

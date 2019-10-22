@@ -37,14 +37,24 @@
     </div>
 </body>
 <div class="card">
+
     <h2>Produtos</h2>
     <div class="container3" *ngFor="let produtos of produtos">
         <h4><b> {{produtos.nome}} </b></h4>
         <img [src]="produtos.fotoUrl" alt="" style="width:10%">
         <p>{{produtos.descricao}}</p>
-        <p><button type="submit" class="btn btn-outline-warning">Comprar</button> Valor: R$ {{produtos.valor}} </p>
+        <p>Valor: R$ {{produtos.valor}}</p>     
+        <a href="produto/detalhes">
+        <p><button  type="submit"class="btn btn-outline-warning">Ver Detalhes</button> 
+        
+        </p>
+    </a>
     </div>
+
 </div>
+
+
+
 <div class="container-box">
     <div class="categorias">
 

@@ -1,0 +1,16 @@
+
+<div class="card">
+
+    <h2>Detalhes do produto</h2>  
+    <div class="container3"  *ngFor="let produtos of produtos" >
+        <h4><b> {{produtos.nome}} </b></h4>
+        <img [src]="produtos.fotoUrl" alt="" style="width:10%">
+        <p>Descriçao do produto: {{produtos.descricao}}</p>
+        <p>Valor: R$ {{produtos.valor}}</p>
+        <p> Telefone de contato: {{produtos.telefone}}</p>
+        <p> Email: {{produtos.email}} </p>
+    </div>
+
+    
+
+</div>
