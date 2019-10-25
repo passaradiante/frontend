@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.usuarioService.logar(form.value).subscribe(
       (resp: any) => {
         localStorage.setItem('token', resp.token);
-        this.route.navigateByUrl('/home')
+        this.route.navigate(['/'])
       },
       (err: any) => {
         alert('Considerado, tem erro, olha o console.'),

@@ -13,9 +13,14 @@
           <a class="dropdown-item" href="#">Serviço</a>
         </div>
       </li>
+      <button *ngIf="localStorage" class="btn btn-danger my-2 my-sm-0" (click)="logout()">Logout</button>
     </div>
   </div>
 </nav>
+
+
+
+
 
 
 

@@ -19,12 +19,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { ProdCadComponent } from './pages/produto/cadastro/prod-cad.component';
 import { ProdListComponent } from './pages/produto/listagem/prod-list.component';
+//import {AuthGuard } from './core/auth/auth.guard'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     BarraMenuComponent,
 
     HomeComponent,

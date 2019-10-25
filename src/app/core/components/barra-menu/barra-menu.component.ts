@@ -10,7 +10,16 @@ export class BarraMenuComponent implements OnInit {
 
   constructor(private route: Router) { }
 
+  localStorage: any;
+
   ngOnInit() {
+    this.localStorage = localStorage.getItem('token');
+    console.log(this.localStorage)
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+     this.route.navigate(['/'])
   }
 
 }
