@@ -2,19 +2,31 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AnuncioComponent } from './pages/anuncio/anuncio.component';
-import { TelaInicialComponent } from './pages/telaInicial/tela-inicial.component';
-import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
-import {DetalheComponent} from './components/detalhe/detalhe.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DetalheComponent } from './core/components/detalhe/detalhe.component';
+import { ProdCadComponent } from './pages/produto/cadastro/prod-cad.component';
 
 
 const routes: Routes = [
-  { path: 'cadastro', component: CadastroComponent },
-  { path: 'login',    component: LoginComponent },
-  { path: 'anuncio',    component: AnuncioComponent },
-  {path: 'cadastro-produto',component :CadastroProdutoComponent},
-  {path: 'produto/detalhe',component:DetalheComponent},
-  { path: '',    component: TelaInicialComponent },
+  {
+    path: '', component: HomeComponent
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'cadastro', component: CadastroComponent
+  },
+  {
+    path: 'produto/cadastro', component: ProdCadComponent
+  },
+  {
+    path: 'servico/cadastro', component: ProdCadComponent
+  },
+  {
+    path: 'produto/detalhe', component: DetalheComponent
+  },
+  
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../../model/usuario.model';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UsuarioService } from 'src/app/core/services/usuario.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,36 +12,34 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  usuario: Usuario = new Usuario();
-  usuarios: any = [];
-
+  formulario: FormGroup;
   constructor(
-    private service: UsuarioService
+    private usuarioService: UsuarioService,
+    private fb: FormBuilder,
+    private route: Router
   ) { }
 
   ngOnInit() {
-    this.loadData();
+    this.usuarioService.getAll();
+    this.formulario = this.fb.group({
+      userName:  [null, Validators.required],
+      Password: [null, [Validators.required, Validators.minLength(6)]]
+    });
   }
 
-  loadData(): void {
-    this.service.listarUsuarios()
-      .then((result) => {
-        this.usuarios = result;
-        console.log(this.usuarios);
-      }).catch((err) => {
-        console.log(err);
-      });
-  }
-
-  logar() {
-    const conta = this.usuario;
-    this.service.logar(conta.email, conta.senha, this.usuarios)
-      .then((result) => {
-        if (result) {
-          return alert("Usuario logado!")
-        }
-        alert("Dados inválidos!")
+  OnSubmit(){
+    let form = this.formulario;
+    console.log(this.formulario.value);
+    this.usuarioService.logar(form.value).subscribe(
+      (resp: any) => {
+        localStorage.setItem('token', resp.token);
+        this.route.navigateByUrl('/home')
+      },
+      (err: any) => {
+        alert('Considerado, tem erro, olha o console.'),
+        console.log(err)
       })
-
   }
+
+
 }
