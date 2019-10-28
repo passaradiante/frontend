@@ -20,26 +20,27 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.usuarioService.getAll();
     this.formulario = this.fb.group({
-      userName:  [null, Validators.required],
+      userName: [null, Validators.required],
       Password: [null, [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  OnSubmit(){
+  OnSubmit() {
     let form = this.formulario;
     console.log(this.formulario.value);
     this.usuarioService.logar(form.value).subscribe(
       (resp: any) => {
         localStorage.setItem('token', resp.token);
-        this.route.navigate(['/'])
+        window.location.href = '/';
       },
       (err: any) => {
         alert('Considerado, tem erro, olha o console.'),
-        console.log(err)
+          console.log(err)
       })
+
   }
+
 
 
 }

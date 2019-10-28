@@ -13,14 +13,12 @@ export class BaseService {
 
   urlAPI: string = `${environment.Endpoint}${this.endpoint}/`;
 
-  getAll() {
-    return this.http.get(this.urlAPI).subscribe(
-      resp => console.log(resp)
-    )
-  }
-
   getID(id: number) {
     return this.http.get(this.urlAPI + id);
+  }
+
+  getAll(){
+    return this.http.get(this.urlAPI);
   }
 
   add(body: object = {}) {
@@ -40,6 +38,5 @@ export class BaseService {
   remove(id: number) {
     return this.http.delete(this.urlAPI + id)
   }
-
 
 }

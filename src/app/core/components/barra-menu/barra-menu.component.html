@@ -1,26 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-custom navbar-light">
-  <a class="navbar-brand" href="">Passar Adiante</a>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="login">Faça seu login</a>
-      <a class="nav-item nav-link" href="cadastro">Crie sua conta</a>
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+  <a class="navbar-brand" href="#">Passar Adiante</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="usuarioLogado == null && usuarioLogado == undefined">
+        <a class="nav-link" href="login">Faça seu login</a>
+      </li>
+      <li class="nav-item" *ngIf="usuarioLogado == null && usuarioLogado == undefined">
+        <a class="nav-link" href="cadastro">Crie sua conta</a>
+      </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Anuncie
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Produto</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="produto/cadastro">Produto</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Serviço</a>
         </div>
       </li>
-      <button *ngIf="localStorage" class="btn btn-danger my-2 my-sm-0" (click)="logout()">Logout</button>
-    </div>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" *ngIf="usuarioLogado != null">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Bem-vindo (a), {{nomeUsuario}}!
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="minha-conta">Minha Conta</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="" (click)="logout()">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </form>
   </div>
 </nav>
-
-
-
-
-
-
-

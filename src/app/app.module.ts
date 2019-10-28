@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { BarraMenuComponent } from './core/components/barra-menu/barra-menu.component';
 
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { LoginComponent } from './pages/Usuario/login/login.component';
+import { CadastroComponent } from './pages/Usuario/cadastro/cadastro.component';
 import { DetalheComponent } from './core/components/detalhe/detalhe.component';
 import { UsuarioService } from './core/services/usuario.service';
 
@@ -19,7 +19,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { ProdCadComponent } from './pages/produto/cadastro/prod-cad.component';
 import { ProdListComponent } from './pages/produto/listagem/prod-list.component';
-//import {AuthGuard } from './core/auth/auth.guard'
+import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
+import { ProdutoService } from './core/services/produto.service';
+import { CategoriaService } from './core/services/categoria.service';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { ProdListComponent } from './pages/produto/listagem/prod-list.component'
     LoginComponent,
     DetalheComponent,
     ProdCadComponent,
-    ProdListComponent
+    ProdListComponent,
+    MinhaContaComponent
   
   ],
   imports: [
@@ -45,6 +48,8 @@ import { ProdListComponent } from './pages/produto/listagem/prod-list.component'
   ],
   providers: [
     UsuarioService,
+    ProdutoService,
+    CategoriaService
   ],
   bootstrap: [AppComponent]
 })

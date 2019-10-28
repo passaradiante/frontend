@@ -1,10 +1,9 @@
-//#region Imports
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-//#endregion
+
 
 @Component({
   selector: 'app-cadastro',
@@ -15,10 +14,8 @@ import { Router } from '@angular/router';
 
 export class CadastroComponent implements OnInit {
 
-  //#region Variaveis
   usuarios$: any;
   formulario: FormGroup
-  //#endregion
 
 
   constructor(

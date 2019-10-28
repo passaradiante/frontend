@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-barra-menu',
@@ -8,18 +9,36 @@ import { Router } from '@angular/router';
 })
 export class BarraMenuComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  usuarioLogado: any;
+  nomeUsuario: string;
 
-  localStorage: any;
+  constructor(
+    private route: Router,
+    private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    this.localStorage = localStorage.getItem('token');
-    console.log(this.localStorage)
+    this.usuarioLogado = localStorage.getItem('token');
+    if (this.usuarioLogado)
+      this.getName();
+    console.log(this.usuarioLogado)
   }
 
   logout() {
     localStorage.removeItem('token');
-     this.route.navigate(['/'])
+    this.ngOnInit();
   }
+
+
+  getName() {
+    this.usuarioService.dadosUsuario().subscribe(
+      (res: any) => {
+        this.nomeUsuario = res.FullName;
+      },
+      (err: any) => {
+        console.log(err)
+      }
+    )
+  }
+
 
 }
