@@ -21,8 +21,9 @@ const routes: Routes = [
   {path:'barra-oculta', component: BarraOcultaComponent ,}
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
+
+  @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule,]
+  })
 export class AppRoutingModule { }

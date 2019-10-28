@@ -1,4 +1,3 @@
-
 import { ProdutoCadastro } from '../app/model/produtocadastro.model';
 
 export const PRODUTOS: ProdutoCadastro[] = [
