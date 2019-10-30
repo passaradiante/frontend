@@ -7,7 +7,7 @@ import { DetalheComponent } from './core/components/detalhe/detalhe.component';
 import { ProdCadComponent } from './pages/produto/cadastro/prod-cad.component';
 import { ProdListComponent } from './pages/produto/listagem/prod-list.component';
 import { AuthGuard } from './core/auth/auth.guard';
-import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
+import { MinhaContaComponent } from './pages/usuario/minha-conta/minha-conta.component';
 
 
 const routes: Routes = [

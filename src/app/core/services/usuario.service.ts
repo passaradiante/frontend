@@ -23,4 +23,5 @@ export class UsuarioService extends BaseService {
     return this.http.get(this.urlAPI, {headers: takenHeader});
   }
 
+
 }

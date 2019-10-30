@@ -22,5 +22,9 @@ export class ProdutoService extends BaseService {
     return this.remove(id);
   }
 
+  getProdutosById(){
+    return this.getAll()
+  }
+
 
 }

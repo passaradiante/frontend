@@ -17,8 +17,8 @@ export class BaseService {
     return this.http.get(this.urlAPI + id);
   }
 
-  getAll(){
-    return this.http.get(this.urlAPI);
+  getAll(query = ''){
+    return this.http.get(this.urlAPI+query);
   }
 
   add(body: object = {}) {
