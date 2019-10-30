@@ -61,7 +61,6 @@ export class CadastroComponent implements OnInit {
         footer: '<a href>Precisa de ajudar?</a>'
       })
     }
-
   }
   
   formEmailConverter(formulario: any){

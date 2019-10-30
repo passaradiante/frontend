@@ -3,6 +3,7 @@ import { ProdutoService } from 'src/app/core/services/produto.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 import { CategoriaService } from 'src/app/core/services/categoria.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-prod-cad',
@@ -33,10 +34,10 @@ export class ProdCadComponent implements OnInit {
           this.formulario = this.fb.group({
             Nome: [null, Validators.required],
             Descricao: [null, Validators.required],
-            CategoriaId: [null, Validators.required],
+            CategoriaID: [null, Validators.required],
             Quantidade: [null, Validators.required],
             Valor: [null, Validators.required],
-            UsuarioId: this.idUsuario,
+            UsuarioID: this.idUsuario,
             DataRegistro: this.dataAtual
           });
         }
@@ -48,7 +49,7 @@ export class ProdCadComponent implements OnInit {
   onSubmit() {
     this.produtoService.save(this.formulario.value).subscribe(
       (res: any) => {
-        console.log(res);
+        this.SwalValidation(res);
       },
       (err: any) => {
 
@@ -68,7 +69,23 @@ export class ProdCadComponent implements OnInit {
     );
   }
 
-
+  SwalValidation(response) {
+    if (response.Validado) {
+      this.formulario.reset();
+      Swal.fire(
+        'Show!',
+        response.Mensagem,
+        'success'
+      )
+    } else {
+      Swal.fire({
+        type: 'error',
+        title: 'Ops...',
+        text: 'Houve um problema, tente novamente!',
+        footer: '<a href>Precisa de ajudar?</a>'
+      })
+    }
+  }
 
 
 }
