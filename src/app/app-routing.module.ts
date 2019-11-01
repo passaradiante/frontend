@@ -1,4 +1,3 @@
-import { BarraOcultaComponent } from './pages/barra-oculta/barra-oculta.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CadastroComponent } from './pages/Usuario/cadastro/cadastro.component';
@@ -9,8 +8,6 @@ import { ProdCadComponent } from './pages/produto/cadastro/prod-cad.component';
 import { ProdListComponent } from './pages/produto/listagem/prod-list.component';
 import { AuthGuard } from './core/auth/auth.guard';
 import { MinhaContaComponent } from './pages/usuario/minha-conta/minha-conta.component';
-
-
 
 
 const routes: Routes = [
@@ -42,12 +39,10 @@ const routes: Routes = [
   //  path: 'servicos', component: ServListComponent
   // }
   
-  {path:'barra-oculta', component: BarraOcultaComponent ,}
 ];
 
-
-  @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule,]
-  })
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
 export class AppRoutingModule { }
