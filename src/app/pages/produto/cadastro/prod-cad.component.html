@@ -1,0 +1,39 @@
+<div class="grid-cadastro" *ngIf="categorias$ && idUsuario">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <h4>Anuncie seu produto!</h4>
+        <div class="form-group">
+            <label>Nome:</label>
+            <input type="text" class="form-control" formControlName="Nome">
+        </div>
+        <div class="form-group">
+            <label>Descrição:</label>
+            <input type="text" class="form-control" formControlName="Descricao">
+        </div>
+        <div>
+            <label>Categoria:</label>
+            <select class="form-control" formControlName="CategoriaID">
+                <option *ngFor="let categoria of categorias$" [ngValue]="categoria.Id"> {{ categoria.Nome }}</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
+            <label for="exampleFormControlFile1">Adicone uma foto:</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>Quantidade:</label>
+                <input type="number" class="form-control" formControlName="Quantidade">
+            </div>
+            <div class="form-group">
+                <label class="label-custom">Valor:</label>
+                <input type="number" class="form-control input-custom" formControlName="Valor">
+            </div>
+        </div>
+        <div class="btnCadastrar">
+            <button type="submit" class="btn btn-outline-warning">
+                Anunciar</button>
+        </div>
+    </form>
+</div>
+
+<br>
