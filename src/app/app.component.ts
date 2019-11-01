@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { Usuario } from './model/usuario.model';
-import {UsuarioService} from './services/usuario.service'
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 
 export class AppComponent {
   title = 'frontend';
-
 }

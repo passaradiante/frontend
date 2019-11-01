@@ -1,0 +1,16 @@
+<div class="grid-cadastro">
+  <form [formGroup]="formulario" (ngSubmit)="OnSubmit()">
+    <h4>Acesse a sua conta</h4>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Login:</label>
+      <input type="email" class="form-control" id="email" formControlName="userName">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Senha:</label>
+      <input type="password" class="form-control" id="senha" formControlName="Password">
+    </div>
+    <div class="btnCadastrar">
+      <button type="submit" class="btn btn-outline-warning">Entrar</button>
+    </div>
+  </form>
+</div>
