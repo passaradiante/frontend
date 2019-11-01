@@ -1,12 +1,9 @@
-<p style="text-align: center;">Meus dados!</p>
+<div style="text-align: center;">
+    
+    <p>Meus dados!</p>
 
+<div *ngIf="usuarioDados">
+    <p>{{ usuarioDados.Email }}</p>
+</div>
 
-<ul *ngIf="usuarioDados">
-    <li>{{ usuarioDados.Email }}</li>
-</ul>
-
-
-<h1>Meus Produtos!</h1>
-<ul *ngIf="usuarioDados">
-    <li>{{ usuarioDados.Email }}</li>
-</ul>
+</div>
