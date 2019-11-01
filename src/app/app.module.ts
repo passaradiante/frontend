@@ -13,12 +13,7 @@ import { ProdutoComponent } from './pages/anuncio/produto/produto.component';
 import { ServicoComponent } from './pages/anuncio/servico/servico.component';
 import { AnuncioComponent } from './pages/anuncio/anuncio.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
-<<<<<<< HEAD
 import { BarraOcultaComponent } from './pages/barra-oculta/barra-oculta.component';
-=======
-import { DetalhesComponent } from './pages/detalhes/detalhes.component';
-
->>>>>>> 6403f018371bb1ee81ee92460e36a351ec18ad22
 
 @NgModule({
   declarations: [
@@ -31,12 +26,7 @@ import { DetalhesComponent } from './pages/detalhes/detalhes.component';
     ServicoComponent,
     AnuncioComponent,
     CadastroProdutoComponent,
-<<<<<<< HEAD
-    BarraOcultaComponent
-=======
-    DetalhesComponent,
-  
->>>>>>> 6403f018371bb1ee81ee92460e36a351ec18ad22
+    BarraOcultaComponent,
   ],
   imports: [
     FormsModule,
