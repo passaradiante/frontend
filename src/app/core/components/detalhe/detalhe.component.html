@@ -1,2 +1,20 @@
-<p>detalhe works!</p>
-
+<div *ngIf="dataProduto$ as Produto" class="grid-cadastro">
+    <h4>{{Produto.Nome}}</h4>
+    <div class="form-group">
+        <p><strong>R$: </strong>{{Produto.Valor}}</p>
+        <p><strong>Qnt. disponível:</strong> {{Produto.Quantidade}}</p>
+    </div>
+    <div class="form-group">
+        <p><strong>Informação:</strong> {{Produto.Descricao}}</p>
+        <p><strong>Categoria: </strong>{{Produto.Categoria.Nome}}</p>
+    </div>
+    <div class="form-group">
+        <p><strong>Anunciante: </strong>{{Produto.Usuario.FullName}}</p>
+    </div>
+    <div class="btn-toolbar justify-content-between">
+        <button type="submit" class="btn btn-outline-warning">
+            Tenho interesse!</button>
+        <button type="submit" class="btn btn-outline-warning">
+            Dúvida?</button>
+    </div>
+</div>

@@ -11,24 +11,25 @@ export class BaseService {
     protected endpoint: string
   ) { }
 
-  urlAPI: string = `${environment.Endpoint}${this.endpoint}/`;
+  urlAPI: string = `${environment.Endpoint}${this.endpoint}`;
 
   getID(id: number) {
     return this.http.get(this.urlAPI + id);
   }
 
   getAll(query = ''){
+    console.log(this.urlAPI+query);
     return this.http.get(this.urlAPI+query);
   }
 
   add(body: object = {}) {
     console.log(this.urlAPI+`cadastro`)
-    return this.http.post(this.urlAPI + `cadastro`, body);
+    return this.http.post(this.urlAPI + `/cadastro`, body);
   }
 
   login(body: object = {}) {
     console.log(this.urlAPI+`login`)
-    return this.http.post(this.urlAPI + `login`, body);
+    return this.http.post(this.urlAPI + `/login`, body);
   }
 
   update(body: object = {}) {

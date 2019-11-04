@@ -10,17 +10,17 @@ export class UsuarioService extends BaseService {
     super(http, 'usuario');
   }
 
-  save(usuario){
+  save(usuario) {
     return this.add(usuario);
   }
 
-  logar(credenciais){
+  logar(credenciais) {
     return this.login(credenciais);
   }
 
   dadosUsuario() {
-    var takenHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')})
-    return this.http.get(this.urlAPI, {headers: takenHeader});
+    var takenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') })
+    return this.http.get(this.urlAPI, { headers: takenHeader });
   }
 
 

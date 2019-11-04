@@ -22,8 +22,8 @@ export class ProdutoService extends BaseService {
     return this.remove(id);
   }
 
-  getProdutosById(){
-    return this.getAll()
+  getProdutoById(id){
+    return this.getAll('?$filter=id%20eq%20'+id+'&$expand=Categoria,Usuario')
   }
 
 

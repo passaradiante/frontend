@@ -1,12 +1,14 @@
-<body>
-    <div *ngIf="produtos$" class="row">
+<body style="padding: 5em;">
+    <div *ngIf="produtos$">
         <div *ngFor="let produto of produtos$">
             <div class="card" style="width: 18rem;">
                 <div class="card-body" >
                     <h5 class="card-title">{{produto.Nome}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Preço: R$ {{produto.Valor}}</h6>
-                    <p class="card-text">{{produto.Descricao}}</p>
-                    <a href="#" class="card-link">Detalhes do Produto</a>
+                    <button type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="openDetails(produto.Id)">
+                    Veja</button>
                 </div>
             </div>
         </div>

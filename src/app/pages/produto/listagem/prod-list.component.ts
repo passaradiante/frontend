@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from 'src/app/core/services/produto.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-prod-list',
@@ -8,16 +9,27 @@ import { ProdutoService } from 'src/app/core/services/produto.service';
 })
 export class ProdListComponent implements OnInit {
 
+  itemSelecionado: number;
   produtos$: any = [];
 
   constructor(
-    private produtoService: ProdutoService
+    private produtoService: ProdutoService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.produtoService.getProdutos().subscribe(
       res => { this.produtos$ = res }
     );
+  }
+
+  openDetails(id) {
+    let nE: NavigationExtras = {
+      queryParams: {
+        produto: id
+      }
+    }
+    this.router.navigate(['detalhes'], nE);
   }
 
 }

@@ -38,6 +38,9 @@ const routes: Routes = [
   // {
   //  path: 'servicos', component: ServListComponent
   // }
+  {
+    path:'detalhes', component: DetalheComponent
+  }
   
 ];
 
