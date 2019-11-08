@@ -36,7 +36,6 @@ export class CadastroComponent implements OnInit {
   onSubmit() {
     let form = this.formulario;
     this.formEmailConverter(form);
-    console.log(this.formulario.value);
     this.usuarioService
       .save(form.value)
       .subscribe(
@@ -49,10 +48,10 @@ export class CadastroComponent implements OnInit {
       this.formulario.reset();
       Swal.fire(
         'Boa!',
-        response.Mensagem,
+        'Faça seu login!',
         'success'
       )
-      this.route.navigateByUrl('/');
+      this.route.navigateByUrl('/login');
     } else {
       Swal.fire({
         type: 'error',

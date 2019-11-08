@@ -14,6 +14,10 @@ export class UsuarioService extends BaseService {
     return this.add(usuario);
   }
 
+  up(usuario){
+    return this.update(usuario);
+  }
+
   logar(credenciais) {
     return this.login(credenciais);
   }

@@ -1,14 +1,17 @@
-<body style="padding: 5em;">
-    <div *ngIf="produtos$">
-        <div *ngFor="let produto of produtos$">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body" >
-                    <h5 class="card-title">{{produto.Nome}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Preço: R$ {{produto.Valor}}</h6>
-                    <button type="button"
-                    class="btn btn-outline-secondary"
-                    (click)="openDetails(produto.Id)">
-                    Veja</button>
+<body style="padding: 5em;" class="container">
+    <div class="row">
+        <div *ngIf="produtos$">
+            <div *ngFor="let produto of produtos$">
+                <div class="card" style="width: 60rem;">
+                    <div class="col-sm-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{produto.Nome}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Preço: R$ {{produto.Valor}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted"><strong>Categoria</strong> -
+                                {{produto.Categoria.Nome}}</h6>
+                            <button type="button" class="btn btn-outline-secondary" (click)="openDetails(produto.Id)"> Veja</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

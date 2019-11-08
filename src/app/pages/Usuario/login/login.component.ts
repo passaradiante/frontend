@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
 
   OnSubmit() {
     let form = this.formulario;
-    console.log(this.formulario.value);
     this.usuarioService.logar(form.value).subscribe(
       (resp: any) => {
         if (resp.token != undefined || resp.token != null) {

@@ -1,0 +1,62 @@
+.grid-cadastro {
+    box-shadow: rgb(67, 67, 67) 0px 2px 4px 0px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 46px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 3%;
+    max-width: 540px;
+    height: 530px;
+    animation-name: fade;
+    animation-duration: 1s;
+    margin-left: 2%;
+  }
+  
+  form {
+    font-family: 'Quicksand';
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  h4 {
+    padding: 10px;
+    text-align: center;
+    color: #434343;
+    font-weight: bolder;
+    font-family: 'Raleway';
+  }
+  
+  button {
+    font-weight: bolder;
+  }
+  
+  .btnCadastrar {
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .row {
+    margin: 15px 0;
+  }
+  
+  label {
+    margin-bottom: 0;
+    margin-left: 1px;
+  }
+  
+  .input-custom {
+    margin-left: 123.5%;
+  }
+  
+  .label-custom {
+    margin-left: 123.5%;
+  }
+  

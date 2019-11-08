@@ -11,8 +11,11 @@ import Swal from 'sweetalert2';
 })
 export class DetalheComponent implements OnInit {
 
+  interesse = false;
   itemId: any;
-  dataProduto$: any;
+  produtoAtual$: any;
+  idProduto: number;
+  idAnunciante: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,8 +39,7 @@ export class DetalheComponent implements OnInit {
   ngOnInit() {
     this.produtoService.getProdutoById(this.itemId).subscribe(
       (resp: any) => {
-        this.dataProduto$ = resp[0];
-        console.log(this.dataProduto$);
+        this.produtoAtual$ = resp[0];
       },
       (err: any) => {
         Swal.fire('Opss', 'Produto não encontrado!', 'error');
@@ -47,8 +49,48 @@ export class DetalheComponent implements OnInit {
 
   }
 
+  interest() {
+    this.interesse = true;
+  }
 
+  sendRequest() {
+    this.idProduto = this.produtoAtual$.Id;
+    this.idAnunciante = this.produtoAtual$.Usuario.Id;
+
+    const request = {
+      "ProdutoID": this.idProduto
+    }
+
+    this.produtoService.interesse(request).subscribe(
+      res => {
+        this.SwalValidation(res);
+      },
+      err => {console.log(err)}
+    );
+       
+  }
+
+  cancelRequest() {
+    this.interesse = false;
+  }
   
+  SwalValidation(response) {
+    if (response.Validado) {
+      Swal.fire(
+        'Massa!',
+        'Enviado mensagem para o anunciante, aguarde!',
+        'success'
+      )
+      this.router.navigateByUrl('/produtos');
+    } else {
+      Swal.fire({
+        type: 'error',
+        title: 'Ops...',
+        text: 'Houve um problema, tente novamente!'
+      })
+    }
+  }
+
 
 
 }

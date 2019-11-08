@@ -29,7 +29,6 @@ export class ProdCadComponent implements OnInit {
     this.usuarioService.dadosUsuario().subscribe(
       (res: any) => {
         this.idUsuario = res.Id;
-        console.log(this.idUsuario);
         if(this.idUsuario != null){
           this.formulario = this.fb.group({
             Nome: [null, Validators.required],
@@ -61,7 +60,6 @@ export class ProdCadComponent implements OnInit {
     this.categoriaService.getCategorias().subscribe(
       (res: any) => {
         this.categorias$ = res;
-        console.log(this.categorias$)
       },
       (err: any) => {
         console.log(err);
@@ -74,7 +72,7 @@ export class ProdCadComponent implements OnInit {
       this.formulario.reset();
       Swal.fire(
         'Show!',
-        response.Mensagem,
+        '',
         'success'
       )
     } else {

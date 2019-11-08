@@ -8,6 +8,8 @@ import { ProdCadComponent } from './pages/produto/cadastro/prod-cad.component';
 import { ProdListComponent } from './pages/produto/listagem/prod-list.component';
 import { AuthGuard } from './core/auth/auth.guard';
 import { MinhaContaComponent } from './pages/usuario/minha-conta/minha-conta.component';
+import { NotificacaoComponent } from './core/components/notificacao/notificacao.component';
+
 
 
 const routes: Routes = [
@@ -40,6 +42,9 @@ const routes: Routes = [
   // }
   {
     path:'detalhes', component: DetalheComponent
+  },
+  {
+    path:'notificacoes', component: NotificacaoComponent
   }
   
 ];

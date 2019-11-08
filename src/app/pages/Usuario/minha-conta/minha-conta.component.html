@@ -1,9 +1,51 @@
-<div style="text-align: center;">
-    
-    <p>Meus dados!</p>
+<div class="grid-cadastro" *ngIf="usuarioDados">
+    <h4>Meus dados</h4>
+    <div *ngIf="!displayForm">
+        <div>
+            <input class="form-control" type="text" placeholder={{usuarioDados.FullName}} readonly>
+        </div>
+        <br>
+        <div>
+            <input class="form-control" type="text" placeholder={{usuarioDados.Email}} readonly>
+        </div>
+        <br>
+        <div>
+            <input class="form-control" type="text" placeholder="Ceará" readonly>
+        </div>
+        <br>
+        <div>
+            <input class="form-control" type="text" placeholder="Fortaleza" readonly>
+        </div>
+        <br>
+        <div>
+            <input class="form-control" type="text" placeholder="Est. Guajeru, 400" readonly>
+        </div>
+        <br>
+        <div>
+            <input class="form-control" type="text" placeholder="(85) 99287-5115" readonly>
+        </div>
+        <br>
+        <div class="btnCadastrar">
+            <button type="submit" class="btn btn-warning" (click)="showFormEdit()">
+                Editar dados</button>
+        </div>
+    </div>
 
-<div *ngIf="usuarioDados">
-    <p>{{ usuarioDados.Email }}</p>
-</div>
+    <div *ngIf="displayForm">
+        <form  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>Nome:</label>
+                <input type="text" class="form-control" value={{usuarioDados.FullName}} >
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" class="form-control" value={{usuarioDados.Email}} >
+            </div>
+            <div class="btnCadastrar">
+                <button type="submit" class="btn btn-outline-warning">
+                    Salvar</button>
+            </div>
+        </form>
+    </div>
 
 </div>

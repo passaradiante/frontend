@@ -20,7 +20,6 @@ export class BarraMenuComponent implements OnInit {
     this.usuarioLogado = localStorage.getItem('token');
     if (this.usuarioLogado)
       this.getName();
-    console.log(this.usuarioLogado)
   }
 
   logout() {

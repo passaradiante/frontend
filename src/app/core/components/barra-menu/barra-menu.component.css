@@ -4,3 +4,22 @@
     font-size: 18px;
     font-weight: bolder;
 }
+
+.notification {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+  }
+  
+  .notification .badge {
+    font-family: 'Quicksand', sans-serif;
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+    background: #816727;
+    color: white;
+  }

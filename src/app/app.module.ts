@@ -22,6 +22,7 @@ import { ProdListComponent } from './pages/produto/listagem/prod-list.component'
 import { MinhaContaComponent } from './pages/usuario/minha-conta/minha-conta.component';
 import { ProdutoService } from './core/services/produto.service';
 import { CategoriaService } from './core/services/categoria.service';
+import { NotificacaoComponent } from './core/components/notificacao/notificacao.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CategoriaService } from './core/services/categoria.service';
     DetalheComponent,
     ProdCadComponent,
     ProdListComponent,
-    MinhaContaComponent
+    MinhaContaComponent,
+    NotificacaoComponent
   
   ],
   imports: [

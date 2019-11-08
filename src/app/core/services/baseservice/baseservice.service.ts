@@ -18,21 +18,18 @@ export class BaseService {
   }
 
   getAll(query = ''){
-    console.log(this.urlAPI+query);
     return this.http.get(this.urlAPI+query);
   }
 
-  add(body: object = {}) {
-    console.log(this.urlAPI+`cadastro`)
+  add(body = {}) {
     return this.http.post(this.urlAPI + `/cadastro`, body);
   }
 
-  login(body: object = {}) {
-    console.log(this.urlAPI+`login`)
+  login(body = {}) {
     return this.http.post(this.urlAPI + `/login`, body);
   }
 
-  update(body: object = {}) {
+  update(body = {}) {
     return this.http.put(this.urlAPI, body);
   }
 

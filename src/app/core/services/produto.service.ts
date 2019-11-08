@@ -11,7 +11,7 @@ export class ProdutoService extends BaseService {
   }
 
   getProdutos() {
-    return this.getAll();
+    return this.getAll('?$expand=Categoria');
   }
 
   save(produto) {
@@ -22,8 +22,12 @@ export class ProdutoService extends BaseService {
     return this.remove(id);
   }
 
-  getProdutoById(id){
-    return this.getAll('?$filter=id%20eq%20'+id+'&$expand=Categoria,Usuario')
+  getProdutoById(id) {
+    return this.getAll('?$filter=id%20eq%20' + id + '&$expand=Categoria,Usuario')
+  }
+
+  interesse(request) {
+    return this.http.post(this.urlAPI + `/interesse`, request)
   }
 
 
