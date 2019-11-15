@@ -26,7 +26,7 @@ export class ProdutoService extends BaseService {
     return this.getAll('?$filter=id%20eq%20' + id + '&$expand=Categoria,Usuario')
   }
 
-  interesse(request) {
+  sendInteresse(request) {
     return this.http.post(this.urlAPI + `/interesse`, request)
   }
 

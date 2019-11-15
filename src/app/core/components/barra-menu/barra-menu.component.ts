@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
+import { _ } from 'underscore';
+import { ProdutoInteresseService } from '../../services/produtointeresse.service';
 
 @Component({
   selector: 'app-barra-menu',
@@ -12,8 +13,10 @@ export class BarraMenuComponent implements OnInit {
   usuarioLogado: any;
   nomeUsuario: string;
 
+  novasNotificacoes: number;
+
   constructor(
-    private route: Router,
+    private interesseService: ProdutoInteresseService,
     private usuarioService: UsuarioService) { }
 
   ngOnInit() {
@@ -27,11 +30,11 @@ export class BarraMenuComponent implements OnInit {
     this.ngOnInit();
   }
 
-
   getName() {
     this.usuarioService.dadosUsuario().subscribe(
       (res: any) => {
         this.nomeUsuario = res.FullName;
+        this.countNotifications(res.Id);
       },
       (err: any) => {
         console.log(err)
@@ -39,5 +42,19 @@ export class BarraMenuComponent implements OnInit {
     )
   }
 
+  countNotifications(request: any) {
+    this.interesseService.getInteresseById(request).subscribe(
+      res => {
+        this.novasNotificacoes = _.pluck(res, 'Lido').filter(v => v == false).length;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  swalNewNotification() {
+
+  }
 
 }

@@ -13,6 +13,11 @@ export class BaseService {
 
   urlAPI: string = `${environment.Endpoint}${this.endpoint}`;
 
+  login(body = {}) {
+    return this.http.post(this.urlAPI + `/login`, body);
+  }
+
+
   getID(id: number) {
     return this.http.get(this.urlAPI + id);
   }
@@ -23,10 +28,6 @@ export class BaseService {
 
   add(body = {}) {
     return this.http.post(this.urlAPI + `/cadastro`, body);
-  }
-
-  login(body = {}) {
-    return this.http.post(this.urlAPI + `/login`, body);
   }
 
   update(body = {}) {

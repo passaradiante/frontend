@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProdutoService } from '../../services/produto.service';
 import Swal from 'sweetalert2';
+import { UsuarioService } from '../../services/usuario.service';
 
 
 @Component({
@@ -15,12 +16,13 @@ export class DetalheComponent implements OnInit {
   itemId: any;
   produtoAtual$: any;
   idProduto: number;
-  idAnunciante: number;
+  idSolicitante: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private produtoService: ProdutoService) {
+    private produtoService: ProdutoService,
+    private usuarioService: UsuarioService) {
     this.route.queryParams.subscribe(params => {
       if (params && params.produto) {
         this.itemId = params.produto;
@@ -37,31 +39,33 @@ export class DetalheComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getId();
     this.produtoService.getProdutoById(this.itemId).subscribe(
       (resp: any) => {
         this.produtoAtual$ = resp[0];
       },
       (err: any) => {
-        Swal.fire('Opss', 'Produto não encontrado!', 'error');
-        this.router.navigateByUrl('/home');
+        Swal.fire('Ops', 'Produto não encontrado!', 'error');
+        this.router.navigateByUrl('/');
       }
     );
 
   }
 
-  interest() {
+  showInterest() {
     this.interesse = true;
   }
 
   sendRequest() {
     this.idProduto = this.produtoAtual$.Id;
-    this.idAnunciante = this.produtoAtual$.Usuario.Id;
+    this.idSolicitante = this.idSolicitante;
 
     const request = {
-      "ProdutoID": this.idProduto
+      "ProdutoID": this.idProduto,
+      "UsuarioSolicitanteID": this.idSolicitante
     }
 
-    this.produtoService.interesse(request).subscribe(
+    this.produtoService.sendInteresse(request).subscribe(
       res => {
         this.SwalValidation(res);
       },
@@ -91,6 +95,13 @@ export class DetalheComponent implements OnInit {
     }
   }
 
+  getId() {
+    this.usuarioService.dadosUsuario().subscribe(
+      (res: any) => {
+        this.idSolicitante = res.Id;
+      },
+    )
+  }
 
 
 }

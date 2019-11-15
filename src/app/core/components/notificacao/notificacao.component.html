@@ -1,1 +1,20 @@
-<p>notificacao works!</p>
+<body style="padding: 5em;" class="container">
+    <div class="row">
+        <div *ngIf="notificacoes$">
+            <div *ngFor="let notificacoes of notificacoes$">
+                <!-- Notificacoes nao lidas -->
+                <div class="card" style="width: 60rem;">
+                    <div class="col-sm-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Alguém teve interesse no seu produto!</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><strong>Produto</strong> -
+                                {{notificacoes.Produto.Nome}}</h6>
+                            <button type="button" class="btn btn-outline-secondary"> Veja</button>
+                            <button *ngIf="!notificacoes.Lido" type="button" class="btn btn-outline-secondary" (click)="lidoInteresse(notificacoes.Id)"> Marcar como lido</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

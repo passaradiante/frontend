@@ -23,6 +23,7 @@ import { MinhaContaComponent } from './pages/usuario/minha-conta/minha-conta.com
 import { ProdutoService } from './core/services/produto.service';
 import { CategoriaService } from './core/services/categoria.service';
 import { NotificacaoComponent } from './core/components/notificacao/notificacao.component';
+import { ProdutoInteresseService } from './core/services/produtointeresse.service';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { NotificacaoComponent } from './core/components/notificacao/notificacao.
   providers: [
     UsuarioService,
     ProdutoService,
-    CategoriaService
+    CategoriaService,
+    ProdutoInteresseService
   ],
   bootstrap: [AppComponent]
 })
