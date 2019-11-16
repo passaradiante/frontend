@@ -24,12 +24,12 @@ export class ProdListComponent implements OnInit {
   }
 
   openDetails(id) {
-    let nE: NavigationExtras = {
+    let params: NavigationExtras = {
       queryParams: {
         produto: id
       }
     }
-    this.router.navigate(['detalhes'], nE);
+    this.router.navigate(['detalhes-produto'], params);
   }
 
 }

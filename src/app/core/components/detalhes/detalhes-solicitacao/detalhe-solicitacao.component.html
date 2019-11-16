@@ -1,4 +1,4 @@
-<div *ngIf="produtoAtual$ as Produto">
+<!-- <div *ngIf="produtoAtual$ as Produto">
     <div *ngIf="!interesse">
         <div class="grid-cadastro">
             <h4>{{Produto.Nome}}</h4>
@@ -23,12 +23,13 @@
     <div *ngIf="interesse" class="grid-interesse">
         <h2 style="text-align: center;">Ótimo!</h2>
         <div *ngIf="Produto.Quantidade > 1">
-            <label>Por favor, nos informe a quantidade:</label>
-            <input type="number">
+
+            <label>Por favor, nos informe a quantidade: (Disponível - {{Produto.Quantidade}})</label>
+            <input type="number" [(ngModel)]="qntDesejada">
         </div>
         <p>Confirme e vamos informar para o anunciante! <br> Você receberá o feedback do mesmo!</p>
         <button class="btn btn-outline-success" (click)="sendRequest()">Confirmar!</button>
         <button class="btn btn-outline-danger" (click)="cancelRequest()">Cancelar</button>
     </div>
 
-</div>
+</div> -->

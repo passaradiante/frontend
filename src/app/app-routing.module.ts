@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { CadastroComponent } from './pages/Usuario/cadastro/cadastro.component';
 import { LoginComponent } from './pages/Usuario/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
-import { DetalheComponent } from './core/components/detalhe/detalhe.component';
+import { DetalheProdutoComponent } from './core/components/detalhes/detalhe-produto/detalhe-prod.component';
 import { ProdCadComponent } from './pages/produto/cadastro/prod-cad.component';
 import { ProdListComponent } from './pages/produto/listagem/prod-list.component';
 import { AuthGuard } from './core/auth/auth.guard';
 import { MinhaContaComponent } from './pages/usuario/minha-conta/minha-conta.component';
 import { NotificacaoComponent } from './core/components/notificacao/notificacao.component';
+import { DetalheSolicitacaoComponent } from './core/components/detalhes/detalhes-solicitacao/detalhe-solicitacao.component';
 
 
 
@@ -32,16 +33,13 @@ const routes: Routes = [
     path: 'servico/cadastro', component: ProdCadComponent
   },
   {
-    path: 'produto-servico/detalhe', component: DetalheComponent
-  },
-  {
     path:'produtos', component: ProdListComponent
   },
-  // {
-  //  path: 'servicos', component: ServListComponent
-  // }
   {
-    path:'detalhes', component: DetalheComponent
+    path:'detalhes-produto', component: DetalheProdutoComponent
+  },
+  {
+    path:'detalhes-solicitacao', component: DetalheSolicitacaoComponent
   },
   {
     path:'notificacoes', component: NotificacaoComponent

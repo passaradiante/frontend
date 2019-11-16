@@ -21,4 +21,8 @@ export class ProdutoInteresseService extends BaseService {
     return this.http.post(this.urlAPI, request);
   }
 
+  sendInteresse(request) {
+    return this.http.post(this.urlAPI + `/interesse`, request)
+  }
+
 }

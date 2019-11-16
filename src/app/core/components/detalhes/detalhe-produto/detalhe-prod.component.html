@@ -1,0 +1,35 @@
+<div *ngIf="produtoAtual$ as Produto">
+    <div *ngIf="!interesse">
+        <div class="grid-cadastro">
+            <h4>{{Produto.Nome}}</h4>
+            <div class="form-group">
+                <p><strong>R$: </strong>{{Produto.Valor}}</p>
+                <p><strong>Qnt. disponível:</strong> {{Produto.Quantidade}}</p>
+            </div>
+            <div class="form-group">
+                <p><strong>Informação:</strong> {{Produto.Descricao}}</p>
+                <p><strong>Categoria: </strong>{{Produto.Categoria.Nome}}</p>
+            </div>
+            <div class="form-group">
+                <p><strong>Anunciante: </strong>{{Produto.Usuario.FullName}}</p>
+            </div>
+            <div class="btn-toolbar justify-content-between">
+                <button type="submit" (click)="showInterest()" class="btn btn-outline-warning">
+                    Tenho interesse!</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="interesse" class="grid-interesse">
+        <h2 style="text-align: center;">Ótimo!</h2>
+        <div *ngIf="Produto.Quantidade > 1">
+
+            <label>Por favor, nos informe a quantidade: (Disponível - {{Produto.Quantidade}})</label>
+            <input type="number" [(ngModel)]="qntDesejada">
+        </div>
+        <p>Confirme e vamos informar para o anunciante! <br> Você receberá o feedback do mesmo!</p>
+        <button class="btn btn-outline-success" (click)="sendRequest()">Confirmar!</button>
+        <button class="btn btn-outline-danger" (click)="cancelRequest()">Cancelar</button>
+    </div>
+
+</div>

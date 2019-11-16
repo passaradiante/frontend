@@ -12,7 +12,7 @@ import { BarraMenuComponent } from './core/components/barra-menu/barra-menu.comp
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/Usuario/login/login.component';
 import { CadastroComponent } from './pages/Usuario/cadastro/cadastro.component';
-import { DetalheComponent } from './core/components/detalhe/detalhe.component';
+import { DetalheProdutoComponent } from './core/components/detalhes/detalhe-produto/detalhe-prod.component';
 import { UsuarioService } from './core/services/usuario.service';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +24,7 @@ import { ProdutoService } from './core/services/produto.service';
 import { CategoriaService } from './core/services/categoria.service';
 import { NotificacaoComponent } from './core/components/notificacao/notificacao.component';
 import { ProdutoInteresseService } from './core/services/produtointeresse.service';
+import { DetalheSolicitacaoComponent } from './core/components/detalhes/detalhes-solicitacao/detalhe-solicitacao.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ProdutoInteresseService } from './core/services/produtointeresse.servic
     HomeComponent,
     CadastroComponent,
     LoginComponent,
-    DetalheComponent,
+    DetalheProdutoComponent,
+    DetalheSolicitacaoComponent,
     ProdCadComponent,
     ProdListComponent,
     MinhaContaComponent,
