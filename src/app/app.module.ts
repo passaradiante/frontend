@@ -25,6 +25,7 @@ import { CategoriaService } from './core/services/categoria.service';
 import { NotificacaoComponent } from './core/components/notificacao/notificacao.component';
 import { ProdutoInteresseService } from './core/services/produtointeresse.service';
 import { DetalheSolicitacaoComponent } from './core/components/detalhes/detalhes-solicitacao/detalhe-solicitacao.component';
+import { ServicoComponent } from './pages/servico/servico.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { DetalheSolicitacaoComponent } from './core/components/detalhes/detalhes
     ProdCadComponent,
     ProdListComponent,
     MinhaContaComponent,
-    NotificacaoComponent
+    NotificacaoComponent,
+    ServicoComponent
   
   ],
   imports: [
