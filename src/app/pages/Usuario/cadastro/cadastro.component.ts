@@ -4,19 +4,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
 
-
 export class CadastroComponent implements OnInit {
 
-  usuarios$: any;
   formulario: FormGroup
-
+  acessoUsuarioNovo = {  userName: '',  Password: '' };
 
   constructor(
     private usuarioService: UsuarioService,
@@ -25,6 +22,11 @@ export class CadastroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.novoFormularioCadastroUsuario();
+  }
+
+  // Método para criar um novo formulário
+  novoFormularioCadastroUsuario(){
     this.formulario = this.fb.group({
       FullName:  [null, Validators.required],
       userName:  [null, Validators.required],
@@ -33,25 +35,25 @@ export class CadastroComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    let form = this.formulario;
-    this.formEmailConverter(form);
-    this.usuarioService
-      .save(form.value)
-      .subscribe(
-        resp => this.SwalValidation(resp)
+  // Método que cadastrar o usário, passando o formulario para API
+  cadastrarUsuario() {
+    this.formatarEmailMinusculo(this.formulario);
+    this.usuarioService.adicionarUsuario(this.formulario.value).subscribe(
+        resp => this.SwalValidacaoCadastroUsuario(resp, this.formulario.value)
       );
   }
 
-  SwalValidation(response) {
+  // SweelAlert para validacao do cadastro do usuário
+  // Mostra se obteve sucesso ou falha
+  SwalValidacaoCadastroUsuario(response, formulario) {
     if (response.Validado) {
-      this.formulario.reset();
       Swal.fire(
         'Boa!',
-        'Faça seu login!',
+        'Seja bem-vindo(a)!',
         'success'
       )
-      this.route.navigateByUrl('/login');
+      this.delay(3000);
+      this.logarUsuarioNovo(formulario);
     } else {
       Swal.fire({
         type: 'error',
@@ -61,12 +63,45 @@ export class CadastroComponent implements OnInit {
       })
     }
   }
+
+  // Método para logar após confirmação do cadastro do usuário
+  logarUsuarioNovo(formulario) {
+    this.formatarFormularioParaLogar(formulario);
+    this.usuarioService.logarUsuario(this.acessoUsuarioNovo).subscribe(
+      (resp: any) => {
+        if (resp.token != undefined || resp.token != null) {
+          localStorage.setItem('token', resp.token);
+          window.location.href = '/';
+        } else {
+          Swal.fire('Ops..', resp.Mensagem, 'error')
+        }
+      },
+      (err: any) => {
+          console.log(err)
+      });
+  }
   
-  formEmailConverter(formulario: any){
+  // Antes de enviar, pega o email do usuário e deixa minisculo
+  formatarEmailMinusculo(formulario){
     let atualEmail = formulario.value.Email;
     let minEmail = atualEmail.toLowerCase();
     return this.formulario.value.Email = minEmail;
   }
 
+  // Método para formatar os dados do usuário cadastrado
+  // para poder logar
+  formatarFormularioParaLogar(formulario) {
+    this.acessoUsuarioNovo.userName = formulario.userName;
+    this.acessoUsuarioNovo.Password = formulario.Password;
+  }
+
+  // Método para delay
+   delay(ms): Promise<boolean> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(true);
+      }, ms);
+    });
+  }
 
 }

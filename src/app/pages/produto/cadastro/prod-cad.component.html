@@ -1,5 +1,5 @@
-<div class="grid-cadastro" *ngIf="categorias$ && idUsuario">
-    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<div class="grid-cadastro" *ngIf="categorias$ && idDoUsuario">
+    <form [formGroup]="formulario" (ngSubmit)="cadastrarProduto()">
         <h4>Anuncie seu produto!</h4>
         <div class="form-group">
             <label>Nome:</label>
@@ -25,8 +25,8 @@
                 <input type="number" class="form-control" formControlName="Quantidade">
             </div>
             <div class="form-group">
-                <label class="label-custom">Valor:</label>
-                <input type="number" class="form-control input-custom" formControlName="Valor">
+                <label class="label-custom">Preço:</label>
+                <input type="number" min="0.00" step="0.01" class="form-control input-custom" formControlName="Valor">
             </div>
         </div>
         <div class="btnCadastrar">

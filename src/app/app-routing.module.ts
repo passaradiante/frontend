@@ -10,8 +10,9 @@ import { AuthGuard } from './core/auth/auth.guard';
 import { MinhaContaComponent } from './pages/usuario/minha-conta/minha-conta.component';
 import { NotificacaoComponent } from './core/components/notificacao/notificacao.component';
 import { DetalheSolicitacaoComponent } from './core/components/detalhes/detalhes-solicitacao/detalhe-solicitacao.component';
-
-
+import { SolicitacaoProdutoComponent } from './pages/produto/solicitacao/solicitacao-produto.component';
+import { SolicitacoesComponent } from './pages/usuario/solicitacoes/solicitacoes.component';
+import { PedidosComponent } from './pages/usuario/pedidos/pedidos.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,15 @@ const routes: Routes = [
   },
   {
     path:'notificacoes', component: NotificacaoComponent
+  },
+  {
+    path: 'solicitacao-produto', component: SolicitacaoProdutoComponent
+  },
+  {
+    path: 'solicitacoes', component: SolicitacoesComponent
+  },
+  {
+    path: 'pedidos', component: PedidosComponent
   }
   
 ];

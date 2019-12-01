@@ -1,17 +1,61 @@
 <body style="padding: 5em;" class="container">
     <div class="row">
-        <div *ngIf="notificacoes$">
-            <div *ngFor="let notificacoes of notificacoes$">
-                <!-- Notificacoes nao lidas -->
+        <!-- Notificacoes de produtos que tiveram interesse -->
+        <div *ngIf="interesseNotificacoes$">
+            <h4>Notificacoes de produtos que tiveram interesse</h4>
+            <div *ngFor="let interesse of interesseNotificacoes$">
                 <div class="card" style="width: 60rem;">
                     <div class="col-sm-8">
                         <div class="card-body">
                             <h5 class="card-title">Alguém teve interesse no seu produto!</h5>
                             <h6 class="card-subtitle mb-2 text-muted"><strong>Produto</strong> -
-                                {{notificacoes.Produto.Nome}}</h6>
-                            <button type="button" class="btn btn-outline-secondary"> Veja</button>
-                            <button *ngIf="!notificacoes.Lido" type="button" class="btn btn-outline-secondary" (click)="lidoInteresse(notificacoes.Id)"> Marcar como lido</button>
+                                {{interesse.Produto.Nome}}</h6>
+                            <button type="button" class="btn btn-outline-secondary"
+                                (click)="visualizarInteresseDeProduto(interesse.Id)"> Veja</button>
+                            <button *ngIf="!interesse.Lido" type="button" class="btn btn-outline-secondary"
+                                (click)="marcarInteresseDeProdutoComoLido(interesse.Id)"> Marcar como lido</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <!-- Notificacoes de solicitacoes -->
+    <div *ngIf="solicitacoesNotificacoes$">
+        <h4>Notificacoes de solicitacoes</h4>
+        <div *ngFor="let interesse of interesseNotificacoes$">
+            <div class="card" style="width: 60rem;">
+                <div class="col-sm-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Alguém teve interesse no seu produto!</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><strong>Produto</strong> -
+                            {{interesse.Produto.Nome}}</h6>
+                        <button type="button" class="btn btn-outline-secondary"
+                            (click)="visualizarInteresseDeProduto(interesse.Id)"> Veja</button>
+                        <button *ngIf="!interesse.Lido" type="button" class="btn btn-outline-secondary"
+                            (click)="marcarInteresseDeProdutoComoLido(interesse.Id)"> Marcar como lido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <!-- Notificacoes de pedidos -->
+    <div *ngIf="pedidosNotificacoes$">
+        <div *ngFor="let pedidos of pedidosNotificacoes$">
+            <div class="card" style="width: 60rem;">
+                <div class="col-sm-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Acompanhe seu pedido!</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><strong>Produto</strong> -
+                            {{pedidos.Produto.Nome}}</h6>
+                        <button type="button" class="btn btn-outline-secondary" (click)="visualizarPedido(pedidos.Id)">
+                            Detalhes</button>
+                        <!--<button *ngIf="!interesse.Lido" type="button" class="btn btn-outline-secondary"
+                            (click)="marcarInteresseDeProdutoComoLido(interesse.Id)"> Marcar como lido</button>-->
                     </div>
                 </div>
             </div>

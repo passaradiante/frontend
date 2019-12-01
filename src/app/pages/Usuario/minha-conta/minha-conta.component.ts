@@ -10,10 +10,10 @@ import Swal from 'sweetalert2';
 })
 export class MinhaContaComponent implements OnInit {
 
-  usuarioDados: any;
-  usuarioID: any;
-  displayForm = false;
-  editFormulario: FormGroup
+  dadosDoUsuario: any;
+  idDoUsuario: any;
+  campoEditar = false;
+  formularioEdicao: FormGroup
 
   constructor(
     private usuarioService: UsuarioService,
@@ -21,20 +21,27 @@ export class MinhaContaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.usuarioService.dadosUsuario().subscribe(
+    this.obterUsuarioDados();
+  }
+
+  // Método para adquirir informações do usuário
+  obterUsuarioDados() {
+    this.usuarioService.obterDadosDoUsuario().subscribe(
       (res: any) => {
-        this.usuarioDados = res;
-        this.usuarioID = res.Id;
+        this.dadosDoUsuario = res;
+        this.idDoUsuario = res.Id;
       },
       (err: any) => {
+        console.log(err);
       }
     )
   }
 
-  editAccount() {
-    this.usuarioService.up(this.editFormulario.value).subscribe(
+  // Método para enviar os dados editados da conta do usuário
+  editarConta() {
+    this.usuarioService.atualizarUsuario(this.formularioEdicao.value).subscribe(
       (res: any) => {
-        this.SwalValidation(res);
+        this.swalValidacaoEdicaoConta(res);
       },
       (err: any) => {
 
@@ -42,18 +49,23 @@ export class MinhaContaComponent implements OnInit {
     )
   }
 
-  showFormEdit() {
-    this.displayForm = true;
-    this.editFormulario = this.fb.group({
-      Nome: [this.usuarioDados.FullName, Validators.required],
-      Descricao: [this.usuarioDados.Email, Validators.required],
+  // Método para mostrar o campo para editar
+  exibirCampoEditar() {
+    this.campoEditar = true;
+    
+    // Método para gerar um novo formulário para editar os dados
+    this.formularioEdicao= this.fb.group({
+      Nome: [this.dadosDoUsuario.FullName, Validators.required],
+      Descricao: [this.dadosDoUsuario.Email, Validators.required],
     })
   }
 
 
-  SwalValidation(response) {
+  // SweelAlert para validacao da edição
+  // Mostra se obteve sucesso ou falha
+  swalValidacaoEdicaoConta(response) {
     if (response.Validado) {
-      this.editFormulario.reset();
+      this.formularioEdicao.reset();
       Swal.fire(
         'Show!',
         response.Mensagem,

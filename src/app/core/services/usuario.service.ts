@@ -10,21 +10,21 @@ export class UsuarioService extends BaseService {
     super(http, 'usuario');
   }
 
-  save(usuario) {
-    return this.add(usuario);
-  }
-
-  up(usuario){
-    return this.update(usuario);
-  }
-
-  logar(credenciais) {
-    return this.login(credenciais);
-  }
-
-  dadosUsuario() {
+  obterDadosDoUsuario() {
     var takenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') })
     return this.http.get(this.urlAPI, { headers: takenHeader });
+  }
+
+  adicionarUsuario(usuario) {
+    return this.adicionar(usuario, 'cadastro');
+  }
+
+  atualizarUsuario(usuario){
+    return this.atualizar(usuario);
+  }
+
+  logarUsuario(credenciais) {
+    return this.adicionar(credenciais, 'login')
   }
 
 

@@ -1,12 +1,12 @@
-<div class="grid-cadastro" *ngIf="usuarioDados">
+<div class="grid-cadastro" *ngIf="dadosDoUsuario">
     <h4>Meus dados</h4>
-    <div *ngIf="!displayForm">
+    <div *ngIf="!campoEditar">
         <div>
-            <input class="form-control" type="text" placeholder={{usuarioDados.FullName}} readonly>
+            <input class="form-control" type="text" placeholder={{dadosDoUsuario.FullName}} readonly>
         </div>
         <br>
         <div>
-            <input class="form-control" type="text" placeholder={{usuarioDados.Email}} readonly>
+            <input class="form-control" type="text" placeholder={{dadosDoUsuario.Email}} readonly>
         </div>
         <br>
         <div>
@@ -26,20 +26,20 @@
         </div>
         <br>
         <div class="btnCadastrar">
-            <button type="submit" class="btn btn-warning" (click)="showFormEdit()">
+            <button type="submit" class="btn btn-warning" (click)="exibirCampoEditar()">
                 Editar dados</button>
         </div>
     </div>
 
-    <div *ngIf="displayForm">
-        <form  (ngSubmit)="onSubmit()">
+    <div *ngIf="campoEditar">
+        <form  (ngSubmit)="editarConta()">
             <div class="form-group">
                 <label>Nome:</label>
-                <input type="text" class="form-control" value={{usuarioDados.FullName}} >
+                <input type="text" class="form-control" value={{dadosDoUsuario.FullName}} >
             </div>
             <div class="form-group">
                 <label>Email:</label>
-                <input type="text" class="form-control" value={{usuarioDados.Email}} >
+                <input type="text" class="form-control" value={{dadosDoUsuario.Email}} >
             </div>
             <div class="btnCadastrar">
                 <button type="submit" class="btn btn-outline-warning">

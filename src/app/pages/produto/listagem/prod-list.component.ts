@@ -9,7 +9,6 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class ProdListComponent implements OnInit {
 
-  itemSelecionado: number;
   produtos$: any = [];
 
   constructor(
@@ -18,12 +17,19 @@ export class ProdListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.produtoService.getProdutos().subscribe(
+    this.obterListaDeProdutos();
+  }
+
+  // Método para listar os produtos
+  obterListaDeProdutos(){
+    this.produtoService.obterProdutos().subscribe(
       res => { this.produtos$ = res }
     );
   }
 
-  openDetails(id) {
+  // Método para mostrar os detalhes do produto
+  // Enviando o Id para a página [detalhes-produto]
+  verDetalhesDoProduto(id) {
     let params: NavigationExtras = {
       queryParams: {
         produto: id

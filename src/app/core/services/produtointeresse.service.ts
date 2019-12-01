@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './baseservice/baseservice.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
@@ -10,19 +10,25 @@ export class ProdutoInteresseService extends BaseService {
     super(http, 'produtointeresse');
   }
 
-  getInteresseById(idUsuario) {
+  obterInterresePorUsuario(idUsuario) {
     return this.http.get(this.urlAPI + `/${idUsuario}`);
   }
 
-  comoLido(id) {
-    const request = {
-      "idNotificacao": id
-    }
-    return this.http.post(this.urlAPI, request);
+  obterInteressePorId(id) {
+    return this.http.get(this.urlAPI + `/interesseporid/${id}`)
   }
 
-  sendInteresse(request) {
-    return this.http.post(this.urlAPI + `/interesse`, request)
+  adicionarInteresse(pedidoInteresse) {
+    return this.adicionar(pedidoInteresse, `/interesse`)
+  }
+
+  marcarComoLido(id) {
+    let pedidoInteresseLido = { "idNotificacao": id };
+    return this.adicionar(pedidoInteresseLido);
+  }
+
+  verificarSeUsuarioSolicitou(idProduto, idUsuario) {
+    return this.http.get(this.urlAPI + `/usuarioSolicitou/${idProduto}/${idUsuario}`);
   }
 
 }

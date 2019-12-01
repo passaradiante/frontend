@@ -13,23 +13,31 @@
             <div class="form-group">
                 <p><strong>Anunciante: </strong>{{Produto.Usuario.FullName}}</p>
             </div>
-            <div class="btn-toolbar justify-content-between">
-                <button type="submit" (click)="showInterest()" class="btn btn-outline-warning">
-                    Tenho interesse!</button>
+            <div *ngIf="!produtoDoAnunciante">
+                <div *ngIf="!usuarioJaSolicitou" class="btn-toolbar justify-content-between">
+                    <button type="submit" (click)="mostrarTelaDeIntresse()" class="btn btn-outline-warning">
+                        Tenho interesse!</button>
+                </div>
+            </div>
+            <div *ngIf="produtoDoAnunciante">
+                <div class="btn-toolbar justify-content-between">
+                    <button type="submit" class="btn btn-outline-warning">
+                        Editar anuncio</button>
+                    <button type="submit" class="btn btn-outline-warning">
+                        Excluir anuncio</button>
+                </div>
             </div>
         </div>
     </div>
-
     <div *ngIf="interesse" class="grid-interesse">
         <h2 style="text-align: center;">Ótimo!</h2>
         <div *ngIf="Produto.Quantidade > 1">
 
             <label>Por favor, nos informe a quantidade: (Disponível - {{Produto.Quantidade}})</label>
-            <input type="number" [(ngModel)]="qntDesejada">
+            <input type="number" [(ngModel)]="quantidadeDesejada">
         </div>
-        <p>Confirme e vamos informar para o anunciante! <br> Você receberá o feedback do mesmo!</p>
-        <button class="btn btn-outline-success" (click)="sendRequest()">Confirmar!</button>
-        <button class="btn btn-outline-danger" (click)="cancelRequest()">Cancelar</button>
+        <p>Confirme e avisaremos ao anunciante! <br> Você receberá o feedback do mesmo!</p>
+        <button class="btn btn-outline-success" (click)="confirmarInteresse()">Confirmar!</button>
+        <button class="btn btn-outline-danger" (click)="cancelarInteresse()">Cancelar</button>
     </div>
-
 </div>

@@ -14,22 +14,26 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
+
   constructor(
     private usuarioService: UsuarioService,
-    private fb: FormBuilder,
-    private route: Router
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
+    this.novoFormularioDeLogin();
+  }
+
+  novoFormularioDeLogin() {
     this.formulario = this.fb.group({
       userName: [null, Validators.required],
       Password: [null, [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  OnSubmit() {
+  logar() {
     let form = this.formulario;
-    this.usuarioService.logar(form.value).subscribe(
+    this.usuarioService.logarUsuario(form.value).subscribe(
       (resp: any) => {
         if (resp.token != undefined || resp.token != null) {
           localStorage.setItem('token', resp.token);
@@ -39,7 +43,6 @@ export class LoginComponent implements OnInit {
         }
       },
       (err: any) => {
-        alert('Considerado, tem erro, olha o console.'),
           console.log(err)
       })
   }

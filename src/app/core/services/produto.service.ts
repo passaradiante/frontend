@@ -10,22 +10,26 @@ export class ProdutoService extends BaseService {
     super(http, 'produto');
   }
 
-  getProdutos() {
-    return this.getAll('?$expand=Categoria');
+  obterProdutos() {
+    return this.obter('?$expand=Categoria');
   }
 
-  save(produto) {
-    return this.add(produto);
+  obterProdutoPorId(id) {
+    return this.obter('?$filter=id%20eq%20' + id + '&$expand=Categoria,Usuario');
   }
 
-  delete(id) {
-    return this.remove(id);
+  adicionarProduto(produto) {
+    //return this.add(produto);
+    return this.adicionar(produto, 'cadastro');
   }
 
-  getProdutoById(id) {
-    return this.getAll('?$filter=id%20eq%20' + id + '&$expand=Categoria,Usuario')
+  removerProduto(id) {
+    return this.remover(id);
   }
 
+  verificarProdutoAnunciante(idUsuario, idProduto) {
+    return this.http.get(this.urlAPI + `/produtoDoAnunciante/${idUsuario}/${idProduto}`);
+  }
 
 
 }

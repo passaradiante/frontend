@@ -10,16 +10,8 @@ export class CategoriaService extends BaseService {
     super(http, 'categoria');
   }
 
-  getCategorias() {
-    return this.getAll();
-  }
-
-  save(produto) {
-    return this.add(produto);
-  }
-
-  delete(id) {
-    return this.remove(id);
+  obterCategorias() {
+    return this.obter();
   }
 
 }

@@ -12,7 +12,6 @@ export class BarraMenuComponent implements OnInit {
 
   usuarioLogado: any;
   nomeUsuario: string;
-
   novasNotificacoes: number;
 
   constructor(
@@ -22,19 +21,21 @@ export class BarraMenuComponent implements OnInit {
   ngOnInit() {
     this.usuarioLogado = localStorage.getItem('token');
     if (this.usuarioLogado)
-      this.getName();
+      this.obterNomeUsuario();
   }
 
-  logout() {
+  // Método para realizar o Logout
+  sairDaConta() {
     localStorage.removeItem('token');
     this.ngOnInit();
   }
 
-  getName() {
-    this.usuarioService.dadosUsuario().subscribe(
+  // Método para mostrar o nome do usuário na barra de menu
+  obterNomeUsuario() {
+    this.usuarioService.obterDadosDoUsuario().subscribe(
       (res: any) => {
         this.nomeUsuario = res.FullName;
-        this.countNotifications(res.Id);
+        this.obterNotificacoesPorUsuario(res.Id);
       },
       (err: any) => {
         console.log(err)
@@ -42,8 +43,9 @@ export class BarraMenuComponent implements OnInit {
     )
   }
 
-  countNotifications(request: any) {
-    this.interesseService.getInteresseById(request).subscribe(
+  // Método para informar as notificações
+  obterNotificacoesPorUsuario(request: any) {
+    this.interesseService.obterInterresePorUsuario(request).subscribe(
       res => {
         this.novasNotificacoes = _.pluck(res, 'Lido').filter(v => v == false).length;
       },
@@ -51,10 +53,6 @@ export class BarraMenuComponent implements OnInit {
         console.log(err);
       }
     )
-  }
-
-  swalNewNotification() {
-
   }
 
 }

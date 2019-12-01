@@ -11,6 +11,7 @@ import { ProdutoInteresseService } from '../../../services/produtointeresse.serv
   templateUrl: './detalhe-solicitacao.component.html',
   styleUrls: ['./detalhe-solicitacao.component.css']
 })
+
 export class DetalheSolicitacaoComponent implements OnInit {
 
   interesse = false;
@@ -72,7 +73,7 @@ export class DetalheSolicitacaoComponent implements OnInit {
   }
 
   getId() {
-    this.usuarioService.dadosUsuario().subscribe(
+    this.usuarioService.obterDadosDoUsuario().subscribe(
       (res: any) => {
         this.idSolicitante = res.Id;
       },
