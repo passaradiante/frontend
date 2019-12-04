@@ -29,6 +29,9 @@ export class CadastroComponent implements OnInit {
   novoFormularioCadastroUsuario(){
     this.formulario = this.fb.group({
       FullName:  [null, Validators.required],
+      City: [null, Validators.required],
+      Address: [null, Validators.required],
+      AddressNumber: [null, Validators.required],
       userName:  [null, Validators.required],
       Email: [null, [Validators.required, Validators.email]],
       Password: [null, [Validators.required, Validators.minLength(6)]]

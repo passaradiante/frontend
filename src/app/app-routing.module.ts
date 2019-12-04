@@ -12,7 +12,7 @@ import { NotificacaoComponent } from './core/components/notificacao/notificacao.
 import { DetalheSolicitacaoComponent } from './core/components/detalhes/detalhes-solicitacao/detalhe-solicitacao.component';
 import { SolicitacaoProdutoComponent } from './pages/produto/solicitacao/solicitacao-produto.component';
 import { SolicitacoesComponent } from './pages/usuario/solicitacoes/solicitacoes.component';
-import { PedidosComponent } from './pages/usuario/pedidos/pedidos.component';
+import { MeusProdutosComponent } from './pages/usuario/meus-produtos/meus-produtos.component';
 
 const routes: Routes = [
   {
@@ -52,7 +52,7 @@ const routes: Routes = [
     path: 'solicitacoes', component: SolicitacoesComponent
   },
   {
-    path: 'pedidos', component: PedidosComponent
+    path: 'meus-produtos', component: MeusProdutosComponent
   }
   
 ];

@@ -12,8 +12,13 @@ export class MinhaContaComponent implements OnInit {
 
   dadosDoUsuario: any;
   idDoUsuario: any;
-  campoEditar = false;
-  formularioEdicao: FormGroup
+  campoEditar;
+  dadosAtualizados = {
+    Id: '',
+    City: '',
+    Address: '',
+    AddressNumber: ''
+  }
 
   constructor(
     private usuarioService: UsuarioService,
@@ -21,6 +26,7 @@ export class MinhaContaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.campoEditar = false;
     this.obterUsuarioDados();
   }
 
@@ -29,6 +35,10 @@ export class MinhaContaComponent implements OnInit {
     this.usuarioService.obterDadosDoUsuario().subscribe(
       (res: any) => {
         this.dadosDoUsuario = res;
+        this.dadosAtualizados.Id = res.Id;
+        this.dadosAtualizados.City = res.City;
+        this.dadosAtualizados.Address = res.Address;
+        this.dadosAtualizados.AddressNumber = res.AddressNumber;
         this.idDoUsuario = res.Id;
       },
       (err: any) => {
@@ -38,13 +48,13 @@ export class MinhaContaComponent implements OnInit {
   }
 
   // Método para enviar os dados editados da conta do usuário
-  editarConta() {
-    this.usuarioService.atualizarUsuario(this.formularioEdicao.value).subscribe(
+  editarDados() {
+      this.usuarioService.atualizarUsuario(this.dadosAtualizados).subscribe(
       (res: any) => {
         this.swalValidacaoEdicaoConta(res);
       },
       (err: any) => {
-
+        console.log(err);
       }
     )
   }
@@ -52,12 +62,10 @@ export class MinhaContaComponent implements OnInit {
   // Método para mostrar o campo para editar
   exibirCampoEditar() {
     this.campoEditar = true;
-    
-    // Método para gerar um novo formulário para editar os dados
-    this.formularioEdicao= this.fb.group({
-      Nome: [this.dadosDoUsuario.FullName, Validators.required],
-      Descricao: [this.dadosDoUsuario.Email, Validators.required],
-    })
+  }
+
+  cancelarEdicao() {
+    this.campoEditar = false;
   }
 
 
@@ -65,12 +73,12 @@ export class MinhaContaComponent implements OnInit {
   // Mostra se obteve sucesso ou falha
   swalValidacaoEdicaoConta(response) {
     if (response.Validado) {
-      this.formularioEdicao.reset();
       Swal.fire(
         'Show!',
         response.Mensagem,
         'success'
       )
+      this.ngOnInit();
     } else {
       Swal.fire({
         type: 'error',

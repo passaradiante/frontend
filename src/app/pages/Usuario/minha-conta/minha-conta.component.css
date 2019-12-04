@@ -1,16 +1,15 @@
 .grid-cadastro {
-    box-shadow: rgb(67, 67, 67) 0px 2px 4px 0px;
-    background-color: rgb(255, 255, 255);
-    padding: 10px 46px;
-    border-radius: 3px;
-    box-sizing: border-box;
-    margin: 0 auto;
-    margin-top: 3%;
-    max-width: 540px;
-    height: 530px;
-    animation-name: fade;
-    animation-duration: 1s;
-    margin-left: 2%;
+  box-shadow: rgb(67, 67, 67) 0px 2px 4px 0px;
+  background-color: rgb(255, 255, 255);
+  padding: 10px 46px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 3%;
+  max-width: 600px;
+  height: 550px;
+  animation-name: fade;
+  animation-duration: 1s;
   }
   
   form {

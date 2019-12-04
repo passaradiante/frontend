@@ -16,7 +16,7 @@ export class UsuarioService extends BaseService {
   }
 
   adicionarUsuario(usuario) {
-    return this.adicionar(usuario, 'cadastro');
+    return this.adicionar(usuario, '/cadastro');
   }
 
   atualizarUsuario(usuario){
@@ -24,8 +24,10 @@ export class UsuarioService extends BaseService {
   }
 
   logarUsuario(credenciais) {
-    return this.adicionar(credenciais, 'login')
+    return this.adicionar(credenciais, '/login')
   }
+
+  
 
 
 }

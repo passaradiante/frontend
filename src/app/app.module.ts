@@ -22,7 +22,7 @@ import { ProdutoInteresseService } from './core/services/produtointeresse.servic
 import { DetalheSolicitacaoComponent } from './core/components/detalhes/detalhes-solicitacao/detalhe-solicitacao.component';
 import { SolicitacaoProdutoComponent } from './pages/produto/solicitacao/solicitacao-produto.component';
 import { SolicitacaoProdutoService } from './core/services/solicitacaoproduto.service';
-import { PedidosComponent } from './pages/usuario/pedidos/pedidos.component';
+import { MeusProdutosComponent } from './pages/usuario/meus-produtos/meus-produtos.component';
 import { SolicitacoesComponent } from './pages/usuario/solicitacoes/solicitacoes.component';
 
 @NgModule({
@@ -39,7 +39,7 @@ import { SolicitacoesComponent } from './pages/usuario/solicitacoes/solicitacoes
     MinhaContaComponent,
     NotificacaoComponent,
     SolicitacaoProdutoComponent,
-    PedidosComponent,
+    MeusProdutosComponent,
     SolicitacoesComponent
   
   ],

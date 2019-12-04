@@ -31,12 +31,12 @@ export class ProdCadComponent implements OnInit {
 
   // Método para adquirir Id do Usuário
   // E iniciar o formulário de cadastro de produto+
-  obterIdDoUsuarioCriarFormulario(){
+  obterIdDoUsuarioCriarFormulario() {
     this.listarCategorias();
     this.usuarioService.obterDadosDoUsuario().subscribe(
       (res: any) => {
         this.idDoUsuario = res.Id;
-        if(this.idDoUsuario != null){
+        if (this.idDoUsuario != null) {
           this.novoFormularioDeCadastroProduto();
         }
       }
@@ -88,7 +88,7 @@ export class ProdCadComponent implements OnInit {
   }
 
   // Limpa todos os campos do formulário e adiciona os validadores
-  novoFormularioDeCadastroProduto(){
+  novoFormularioDeCadastroProduto() {
     this.formulario = this.fb.group({
       Nome: [null, Validators.required],
       Descricao: [null, Validators.required],

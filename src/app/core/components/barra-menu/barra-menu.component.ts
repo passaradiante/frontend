@@ -55,4 +55,9 @@ export class BarraMenuComponent implements OnInit {
     )
   }
 
+  // Método para recarregar página e ir para tela inicial
+  irParaPaginaInicial() {
+    window.location.href = '/';
+  }
+
 }

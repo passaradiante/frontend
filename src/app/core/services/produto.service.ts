@@ -19,8 +19,11 @@ export class ProdutoService extends BaseService {
   }
 
   adicionarProduto(produto) {
-    //return this.add(produto);
-    return this.adicionar(produto, 'cadastro');
+    return this.adicionar(produto, '/cadastro');
+  }
+
+  atualizarProduto(id, produto) { 
+    return this.atualizar(produto, id);
   }
 
   removerProduto(id) {

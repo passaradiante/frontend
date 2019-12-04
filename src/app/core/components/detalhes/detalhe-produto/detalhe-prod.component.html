@@ -1,42 +1,85 @@
 <div *ngIf="produtoAtual$ as Produto">
     <div *ngIf="!interesse">
         <div class="grid-cadastro">
-            <h4>{{Produto.Nome}}</h4>
-            <div class="form-group">
-                <p><strong>R$: </strong>{{Produto.Valor}}</p>
-                <p><strong>Qnt. disponível:</strong> {{Produto.Quantidade}}</p>
-            </div>
-            <div class="form-group">
-                <p><strong>Informação:</strong> {{Produto.Descricao}}</p>
-                <p><strong>Categoria: </strong>{{Produto.Categoria.Nome}}</p>
-            </div>
-            <div class="form-group">
-                <p><strong>Anunciante: </strong>{{Produto.Usuario.FullName}}</p>
-            </div>
-            <div *ngIf="!produtoDoAnunciante">
-                <div *ngIf="!usuarioJaSolicitou" class="btn-toolbar justify-content-between">
-                    <button type="submit" (click)="mostrarTelaDeIntresse()" class="btn btn-outline-warning">
-                        Tenho interesse!</button>
+            <div *ngIf="!campoParaEditarProduto">
+                <h4>{{Produto.Nome}}</h4>
+                <div class="form-group">
+                    <p><strong>R$: </strong>{{Produto.Valor}}</p>
+                    <p><strong>Qnt. disponível:</strong> {{Produto.Quantidade}}</p>
+                </div>
+                <div class="form-group">
+                    <p><strong>Informação:</strong> {{Produto.Descricao}}</p>
+                    <p><strong>Categoria: </strong>{{Produto.Categoria.Nome}}</p>
+                </div>
+                <div class="form-group">
+                    <p *ngIf="!produtoDoAnunciante"><strong>Anunciante: </strong>{{Produto.Usuario.FullName}}</p>
+                    <p *ngIf="produtoDoAnunciante"> <strong>Anunciante: </strong><strong>Você</strong></p>
+                </div>
+                <div *ngIf="!produtoDoAnunciante">
+                    <div *ngIf="!usuarioJaSolicitou" class="btn-toolbar justify-content-between">
+                        <button type="submit" (click)="mostrarTelaDeIntresse()" class="btn btn-outline-warning">
+                            Tenho interesse!</button>
+                    </div>
+                </div>
+                <div *ngIf="produtoDoAnunciante">
+                    <div class="btn-toolbar justify-content-between">
+                        <button type="submit" (click)="mostrarCampoEditarProduto()" class="btn btn-outline-warning">
+                            Editar anúncio</button>
+                        <button type="submit" (click)="removerAnuncio(Produto.Id)" class="btn btn-outline-warning">
+                            Excluir anúncio</button>
+                    </div>
                 </div>
             </div>
-            <div *ngIf="produtoDoAnunciante">
-                <div class="btn-toolbar justify-content-between">
-                    <button type="submit" class="btn btn-outline-warning">
-                        Editar anuncio</button>
-                    <button type="submit" class="btn btn-outline-warning">
-                        Excluir anuncio</button>
-                </div>
+
+            <!-- Editar produto, sendo anunciante -->
+            <div *ngIf="campoParaEditarProduto">
+                <form (ngSubmit)="editarAnuncio()">
+                    <h4>Edite seu produto!</h4>
+                    <div class="form-group">
+                        <label>Nome:</label>
+                        <input type="text" class="form-control" name="produtoNome" [(ngModel)]="formularioEditarProduto.Nome">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição:</label>
+                        <input type="text" class="form-control" name="produtoDescricao" [(ngModel)]="formularioEditarProduto.Descricao">
+                    </div>
+                    <div>
+                        <label>Categoria:</label>
+                        <select class="form-control" name="produtoCategoria" [(ngModel)]="formularioEditarProduto.CategoriaID">
+                            <option *ngFor="let categoria of categorias$" [ngValue]="categoria.Id"> {{ categoria.Nome }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label>Mude a foto:</label>
+                        <input type="file" class="form-control-file" id="imagem">
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Quantidade:</label>
+                            <input type="number" class="form-control" name="produtoQuantidade" [(ngModel)]="formularioEditarProduto.Quantidade">
+                        </div>
+                        <div class="form-group">
+                            <label class="label-custom">Preço:</label>
+                            <input type="number" class="form-control input-custom" name="produtoValor" [(ngModel)]="formularioEditarProduto.Valor">
+                        </div>
+                    </div>
+                    <div class="btn-toolbar justify-content-between">
+                        <button type="submit" (click)="editarAnuncio(Produto.Id)"class="btn btn-outline-warning">
+                            Salvar edição!</button>
+                        <button type="submit" (click)="cancelarEdicao()" class="btn btn-outline-warning">
+                            Cancelar edição</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <div *ngIf="interesse" class="grid-interesse">
+    <div *ngIf="interesse && idDoSolicitante" class="grid-interesse">
         <h2 style="text-align: center;">Ótimo!</h2>
         <div *ngIf="Produto.Quantidade > 1">
-
             <label>Por favor, nos informe a quantidade: (Disponível - {{Produto.Quantidade}})</label>
             <input type="number" [(ngModel)]="quantidadeDesejada">
         </div>
-        
         <p>Confirme e avisaremos ao anunciante! <br> Você receberá o feedback do mesmo!</p>
         <button class="btn btn-outline-success" (click)="confirmarInteresse()">Confirmar!</button>
         <button class="btn btn-outline-danger" (click)="cancelarInteresse()">Cancelar</button>
