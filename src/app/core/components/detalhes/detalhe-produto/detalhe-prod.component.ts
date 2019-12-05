@@ -26,6 +26,7 @@ export class DetalheProdutoComponent implements OnInit {
   produtoDoAnunciante = false;
   campoParaEditarProduto = false;
   formularioEditarProduto = {
+    Id: '',
     Nome: '',
     Descricao: '',
     DataRegistro: '',
@@ -44,7 +45,7 @@ export class DetalheProdutoComponent implements OnInit {
     private interesseService: ProdutoInteresseService,
     private usuarioService: UsuarioService) {
 
-    // Receber o ID do produto através da página [Produtos] 
+    // Receber o ID do produto através da página [Produtos e Meus Produtos] 
     this.route.queryParams.subscribe(params => {
       if (params && params.produto) {
         this.idDoProduto = params.produto;
@@ -60,6 +61,7 @@ export class DetalheProdutoComponent implements OnInit {
   obterDetalhesPorId(idDoProduto, idDoUsuario, ) {
     this.produtoService.obterProdutoPorId(idDoProduto).subscribe(
       (resp: any) => {
+        debugger
         this.produtoAtual$ = resp[0];
         this.listarCategorias();
         this.OrganizarDadosProdutoEditar(this.produtoAtual$);
@@ -67,6 +69,7 @@ export class DetalheProdutoComponent implements OnInit {
         this.verificarProdutoEhDoUsuario(idDoUsuario, this.produtoAtual$.Id);      
       },
       (err: any) => {
+        console.log(err);
         Swal.fire('Ops', 'Produto não encontrado!', 'error');
         this.router.navigateByUrl('/');
       }
@@ -181,7 +184,6 @@ export class DetalheProdutoComponent implements OnInit {
   // Método para habilitar campo de edição
   mostrarCampoEditarProduto() {
     this.campoParaEditarProduto = true;
-    console.log(this.campoParaEditarProduto)
   }
 
   // Método para desabilitar o campo de edição
@@ -190,13 +192,12 @@ export class DetalheProdutoComponent implements OnInit {
   }
 
   // Método para editar o produto selecionado
-  editarAnuncio(idDoProduto) {
-    debugger
-    this.produtoService.atualizarProduto(idDoProduto, this.formularioEditarProduto).subscribe(
+  editarAnuncio() {
+    this.produtoService.atualizarProduto(this.formularioEditarProduto).subscribe(
       res => {
           this.swalValidacaoEdicaoProduto(res)
       },
-      err => { }
+      err => { console.log }
     )
   }
 
@@ -231,6 +232,7 @@ export class DetalheProdutoComponent implements OnInit {
 
   // Método para preencher os dados do produto atual para editar
   OrganizarDadosProdutoEditar(produtoAtual) {
+    this.formularioEditarProduto.Id = produtoAtual.Id;
     this.formularioEditarProduto.Nome = produtoAtual.Nome;
     this.formularioEditarProduto.Quantidade = produtoAtual.Quantidade;
     this.formularioEditarProduto.Descricao = produtoAtual.Descricao;

@@ -23,7 +23,8 @@ export class ProdListComponent implements OnInit {
   // Método para listar os produtos
   obterListaDeProdutos(){
     this.produtoService.obterProdutos().subscribe(
-      res => { this.produtos$ = res }
+      res => { console.log(res); this.produtos$ = res },
+      err => { console.log(err);}
     );
   }
 

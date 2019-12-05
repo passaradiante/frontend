@@ -15,15 +15,20 @@ export class ProdutoService extends BaseService {
   }
 
   obterProdutoPorId(id) {
+    console.log(id)
     return this.obter('?$filter=id%20eq%20' + id + '&$expand=Categoria,Usuario');
+  }
+
+  obterProdutosPorUsuario(idDoUsuario) {
+    return this.obter(`/produtosPorUsuario${idDoUsuario}`)
   }
 
   adicionarProduto(produto) {
     return this.adicionar(produto, '/cadastro');
   }
 
-  atualizarProduto(id, produto) { 
-    return this.atualizar(produto, id);
+  atualizarProduto(produto) {
+    return this.atualizar(produto);
   }
 
   removerProduto(id) {

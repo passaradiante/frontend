@@ -14,7 +14,7 @@ export class BaseService {
 
   // Método GET - Para obter dados da API com ou sem caminho na URL
   obter(caminho = '') {
-    return this.http.get(this.urlAPI + `/${caminho}`);
+    return this.http.get(this.urlAPI + `${caminho}`);
   }
   
   // Método POST - Para adicionar dados na API com ou sem caminho na URL

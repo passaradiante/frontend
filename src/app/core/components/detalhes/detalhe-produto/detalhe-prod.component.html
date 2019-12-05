@@ -12,8 +12,7 @@
                     <p><strong>Categoria: </strong>{{Produto.Categoria.Nome}}</p>
                 </div>
                 <div class="form-group">
-                    <p *ngIf="!produtoDoAnunciante"><strong>Anunciante: </strong>{{Produto.Usuario.FullName}}</p>
-                    <p *ngIf="produtoDoAnunciante"> <strong>Anunciante: </strong><strong>Você</strong></p>
+                    <p *ngIf="!produtoDoAnunciante"><strong>Anunciante: </strong>{{Produto.Usuario.FullName}}</p>      
                 </div>
                 <div *ngIf="!produtoDoAnunciante">
                     <div *ngIf="!usuarioJaSolicitou" class="btn-toolbar justify-content-between">
