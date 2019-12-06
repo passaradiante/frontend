@@ -71,7 +71,7 @@ export class SolicitacaoProdutoComponent implements OnInit {
     if (response.Validado) {
       Swal.fire(
         'Show!',
-        'Solicitação iniciada, acompanhe em: Minhas Solicitações!',
+        'O solicitante será notificado, aguarde o seu retorno por e-mail!',
         'success'
       )
       this.router.navigateByUrl('/notificacoes');

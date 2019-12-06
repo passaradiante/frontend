@@ -74,7 +74,7 @@ export class ProdCadComponent implements OnInit {
       this.formulario.reset();
       Swal.fire(
         'Feito!',
-        'Produto cadastrado!',
+        'Anúncio cadastrado!',
         'success'
       )
     } else {

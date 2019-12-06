@@ -61,7 +61,6 @@ export class DetalheProdutoComponent implements OnInit {
   obterDetalhesPorId(idDoProduto, idDoUsuario, ) {
     this.produtoService.obterProdutoPorId(idDoProduto).subscribe(
       (resp: any) => {
-        debugger
         this.produtoAtual$ = resp[0];
         this.listarCategorias();
         this.OrganizarDadosProdutoEditar(this.produtoAtual$);
@@ -109,7 +108,6 @@ export class DetalheProdutoComponent implements OnInit {
       "UsuarioSolicitanteID": this.idDoSolicitante,
       "Quantidade": this.quantidadeDesejada
     }
-    debugger
     this.interesseService.adicionarInteresse(pedidoInteresse).subscribe(
       res => {
         this.swalValidacaoDeRequisicaoDeInteresse(res);

@@ -1,19 +1,19 @@
 <div *ngIf="solicitacao$ as solicitacao">
     <div>
         <div class="grid-cadastro">
-            <h4>Veja! Tem alguém interessado no seu produto!</h4>
+            <h3>Alguém teve interesse no seu produto!</h3>
             <div class="form-group">
                 <p><strong>Produto:</strong> {{solicitacao.Produto.Nome}}</p>
                 <p><strong>Quantidade solicitada:</strong> {{solicitacao.QuantidadeDesejada}}</p>
             </div>
             <br>
             <div class="form-group">
-                <h4>Dados do solicitante</h4>
+                <h6>Dados do Solicitante</h6>
                 <p><strong>Nome:</strong> {{solicitacao.UsuarioSolicitante.FullName}}</p>
-                <p><strong>Localidade:</strong> Fortaleza</p>
+                <p><strong>Localidade:</strong> {{solicitacao.UsuarioSolicitante.City}}</p>
             </div>
             <div class="btn-toolbar justify-content-center">
-                <button type="submit" (click)="enviarSolicitacao(solicitacao.Id)" class="btn btn-outline-warning">
+                <button type="submit" (click)="enviarSolicitacao(solicitacao.Id)" class="btn btn-dark">
                     Confirmar solicitação!</button>
             </div>
             <div class="btn-toolbar justify-content-center" *ngIf="solicitacaoEncaminhada">

@@ -15,8 +15,8 @@
                     <p *ngIf="!produtoDoAnunciante"><strong>Anunciante: </strong>{{Produto.Usuario.FullName}}</p>      
                 </div>
                 <div *ngIf="!produtoDoAnunciante">
-                    <div *ngIf="!usuarioJaSolicitou" class="btn-toolbar justify-content-between">
-                        <button type="submit" (click)="mostrarTelaDeIntresse()" class="btn btn-outline-warning">
+                    <div *ngIf="!usuarioJaSolicitou" class="btnInteresse">
+                        <button type="submit" (click)="mostrarTelaDeIntresse()" class="btn btn-secondary">
                             Tenho interesse!</button>
                     </div>
                 </div>
@@ -49,10 +49,10 @@
                             </option>
                         </select>
                     </div>
-                    <div class="form-group" style="margin-top: 10px;">
+                    <!-- <div class="form-group" style="margin-top: 10px;">
                         <label>Mude a foto:</label>
                         <input type="file" class="form-control-file" id="imagem">
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="form-group">
                             <label>Quantidade:</label>
@@ -65,22 +65,24 @@
                     </div>
                     <div class="btn-toolbar justify-content-between">
                         <button type="submit" (click)="editarAnuncio(Produto.Id)"class="btn btn-outline-warning">
-                            Salvar edição!</button>
+                            Salvar</button>
                         <button type="submit" (click)="cancelarEdicao()" class="btn btn-outline-warning">
-                            Cancelar edição</button>
+                            Cancelar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div *ngIf="interesse && idDoSolicitante" class="grid-interesse">
-        <h2 style="text-align: center;">Ótimo!</h2>
+    <div style="text-align: center;" *ngIf="interesse && idDoSolicitante" class="grid-interesse">
+        <h2 >Ótimo!</h2>
         <div *ngIf="Produto.Quantidade > 1">
             <label>Por favor, nos informe a quantidade: (Disponível - {{Produto.Quantidade}})</label>
             <input type="number" [(ngModel)]="quantidadeDesejada">
         </div>
         <p>Confirme e avisaremos ao anunciante! <br> Você receberá o feedback do mesmo!</p>
-        <button class="btn btn-outline-success" (click)="confirmarInteresse()">Confirmar!</button>
-        <button class="btn btn-outline-danger" (click)="cancelarInteresse()">Cancelar</button>
+        <div class="btn-toolbar justify-content-between">
+            <button class="btn btn-success" (click)="confirmarInteresse()">Confirmar!</button>
+            <button class="btn btn-danger" (click)="cancelarInteresse()">Cancelar</button>
+        </div>
     </div>
 </div>

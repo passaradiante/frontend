@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { _ } from 'underscore';
 import { ProdutoInteresseService } from '../../services/produtointeresse.service';
+import { SolicitacaoProdutoService } from '../../services/solicitacaoproduto.service';
 
 @Component({
   selector: 'app-barra-menu',
@@ -16,6 +17,7 @@ export class BarraMenuComponent implements OnInit {
 
   constructor(
     private interesseService: ProdutoInteresseService,
+    private solicitacaoService: SolicitacaoProdutoService,
     private usuarioService: UsuarioService) { }
 
   ngOnInit() {
@@ -44,10 +46,15 @@ export class BarraMenuComponent implements OnInit {
   }
 
   // Método para informar as notificações
-  obterNotificacoesPorUsuario(request: any) {
-    this.interesseService.obterInterresePorUsuario(request).subscribe(
+  obterNotificacoesPorUsuario(idDoUsuario) {
+    this.interesseService.obterInterresePorUsuario(idDoUsuario).subscribe(
       res => {
         this.novasNotificacoes = _.pluck(res, 'Lido').filter(v => v == false).length;
+        this.solicitacaoService.obterSolicitacoesPorUsuario(idDoUsuario).subscribe(
+          res => {
+            this.novasNotificacoes += _.pluck(res, 'Lido').filter(v => v == false).length;
+          }
+        );
       },
       err => {
         console.log(err);

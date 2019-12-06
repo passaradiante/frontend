@@ -1,1 +1,13 @@
-<p>solicitacoes works!</p>
+<div *ngIf="solicitacaoProduto$ as solicitacao">
+        <div>
+            <div class="grid-cadastro">
+                <h3>Olá, o anunciante confirmou a sua solicitação!</h3>
+                <div class="form-group">
+                    <h5>Favor, entrar em contato com o solicitante!</h5>
+                    <p><strong>Nome:</strong> {{solicitacao.UsuarioAnunciante.FullName}}</p>
+                    <p><strong>E-mail:</strong> {{solicitacao.UsuarioAnunciante.Email}}</p>
+                    <h6>Ao receber o produto, informe ao anunciante para mesmo encerrar o anúncio.</h6>
+                </div>
+            </div>
+        </div>
+</div>

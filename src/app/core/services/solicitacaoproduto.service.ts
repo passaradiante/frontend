@@ -11,20 +11,19 @@ export class SolicitacaoProdutoService extends BaseService {
   }
 
   confirmarSolicitacaoProduto(request: any) {
-    return this.http.post(this.urlAPI, request)
+    return this.http.post(this.urlAPI, request);
   }
 
   marcarComoLida(id) {
-    let solicitacaoLida = { "idSolicitacao": id };
-    return this.adicionar(solicitacaoLida);
+    return this.adicionar('', `/marcarComoLida${id}`);
   }
 
-  // obterSolicitacoesPedidos(request: any) {
-  //   let body = {
-  //     "Id": request,
-  //     "Solicitante": true
-  //   };
-  //   return this.http.post(this.urlAPI + '/obterSolicitacoes', body);
-  // }
+  obterSolicitacoesPorUsuario(idDoUsuario) {
+    return this.obter(`/obterSolicitacoes${idDoUsuario}`);
+  }
+
+  obterSolicitacoesPorId(idSolicitacao) {
+    return this.obter(`/obterSolicitacaoPorId${idSolicitacao}`);
+  }
 
 }

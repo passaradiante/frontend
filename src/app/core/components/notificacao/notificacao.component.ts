@@ -22,27 +22,28 @@ export class NotificacaoComponent implements OnInit {
     private solicitacaoService: SolicitacaoProdutoService) { }
 
   ngOnInit() {
-    this.obterUsuarioInteressesSolicitacoesPedidos();
+    this.obterUsuarioInteressesSolicitacoes();
   }
 
   // Método para obter o usuário
   // E as notificações: Interesse de produto, Solicitaçoes e pedidos
-  obterUsuarioInteressesSolicitacoesPedidos() {
+  obterUsuarioInteressesSolicitacoes() {
     this.usuarioService.obterDadosDoUsuario().subscribe(
       (res: any) => {
         let idDoUsuario = res.Id;
         this.obterInteressesDeProdutoPorUsuario(idDoUsuario);
-        //this.obterPedidosPorUsuario(idDoUsuario);
+        this.obterSolicitacoesDeProdutoPorUsuario(idDoUsuario);
       },
     )
   }
 
-  //#region [Interesses]
+  //#region [InteressesProduto]
 
   // Método para adquirir interesses de produto por usuário 
   obterInteressesDeProdutoPorUsuario(id) {
     this.interesseService.obterInterresePorUsuario(id).subscribe(
-      res => {
+      (res: any) => {
+        if(res.length > 0)
         this.interesseNotificacoes$ = res;
       },
       err => {
@@ -80,6 +81,18 @@ export class NotificacaoComponent implements OnInit {
 
   //#region [Solicitacoes]
 
+  obterSolicitacoesDeProdutoPorUsuario(idDoUsuario) {
+    this.solicitacaoService.obterSolicitacoesPorUsuario(idDoUsuario).subscribe(
+      (res: any) => {
+        if(res.length > 0)
+        this.solicitacoesNotificacoes$ = res;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
   // Método para ver a solicitação
   visualizarSolicitacaoDeProduto(id) {
     let params: NavigationExtras = {
@@ -105,30 +118,5 @@ export class NotificacaoComponent implements OnInit {
   }
 
   //#endregion
-
-  //#region [Pedidos]
-  // Método para adquirir notiifcações de pedido por usuário
-  obterPedidosPorUsuario(id) {
-    // this.solicitacaoService.obterSolicitacoesPedidos(id).subscribe(
-    //   (res: any) => {
-    //     this.pedidosNotificacoes$ = res;
-    //   },
-    //   (err: any) => {
-
-    //   }
-    // )
-  }
-
-  // Método para ver o pedido
-  visualizarPedido(id) {
-    let params: NavigationExtras = {
-      queryParams: {
-        pedido: id
-      }
-    }
-    this.router.navigate(['pedidos'], params)
-  }
-
-   //#endregion
 
   }
